@@ -1,0 +1,13 @@
+{
+  "option": {
+    "home": "Inicio",
+    "monitoring": "Monitoreo",
+    "maintenance": "Mantenimiento",
+    "data-analytics": "Datos Analiticos"
+  },
+  "authoring-phrase": {
+    "intro": "Hecho con",
+    "use": "utilizando",
+    "author": "por el Equipo de Desarrollo de {brand}"
+  }
+}
