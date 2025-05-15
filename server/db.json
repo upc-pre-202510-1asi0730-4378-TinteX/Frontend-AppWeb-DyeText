@@ -1,12 +1,58 @@
 {
   "categories": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Vue.js"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "ASP.NET Core"
+    }
+  ],
+  "machine_information": [
+    {
+      "id": "1",
+      "textil_machine": 101,
+      "time_spent": "02:30:00",
+      "day_progress": 75.5,
+      "failiture_rate": 2.5,
+      "amount_failure": 3,
+      "user_id": "user_1"
+    },
+    {
+      "id": "2",
+      "textil_machine": 102,
+      "time_spent": "01:15:00",
+      "day_progress": 50,
+      "failiture_rate": 1,
+      "amount_failure": 1,
+      "user_id": "user_2"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "task_1",
+      "machine_id": "1",
+      "description": "Revisar motor",
+      "status": "pending"
+    },
+    {
+      "id": "task_2",
+      "machine_id": "2",
+      "description": "Cambiar filtro",
+      "status": "completed"
+    },
+    {
+      "id": "6bbf",
+      "machineId": "1",
+      "description": "Cambiar hilos",
+      "status": "pending"
+    },
+    {
+      "id": "8852",
+      "machineId": "1",
+      "description": "Cambiar hilos",
+      "status": "pending"
     }
   ]
 }

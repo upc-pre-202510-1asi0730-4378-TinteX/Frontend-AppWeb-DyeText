@@ -4,6 +4,8 @@
  */
 import ConfigurationPage from '../machine-configuration/pages/ConfigurationPage.vue';
 import {createRouter, createWebHistory} from "vue-router";
+import UpcomingTasks from "../task/component/UpcomingTasks.vue";
+import DelayedTasks from "../task/component/DelayedTasks.vue";
 
 /**
  * @description Lazy-loaded component imports for route configuration
@@ -27,6 +29,13 @@ const routes = [
     {   path: '/',                      name: 'default',            redirect: {name: 'home'}},
     {   path: '/:pathMatch(.*)*',       name: 'not-found',          component: PageNotFoundComponent,       meta: {title: 'Page not found'}},
     {   path: '/machine-configuration', name: 'machine-configuration', component: ConfigurationPage },
+    {
+        path: '/tasks',
+        name: 'UpcomingTasks',
+        component: UpcomingTasks,
+    },
+    { path: '/delayed-tasks', name: 'DelayedTasks', component: DelayedTasks },
+
 ]
 
 /**
