@@ -3,58 +3,35 @@
  * Defines all routes and navigation behavior for the application
  */
 
-import {createRouter, createWebHistory} from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 
-
-/**
- * @description Lazy-loaded component imports for route configuration
- * Using dynamic imports to enable code splitting and improve initial load performance
- */
-
-const HomeComponent = () => import('../../../frontend_dyetex/src/public/pages/home.component.vue');
-const PageNotFoundComponent = () => import('../../../frontend_dyetex/src/public/pages/page-not-found.component.vue');
+// Lazy-loaded components for route configuration
+const HomeComponent = () => import('../public/pages/home.component.vue');
+const AboutComponent = () => import('../public/pages/about.component.vue');
+const NotificationManagementComponent = () => import('../alertSystem/pages/notification-management.component.vue');
+const PageNotFoundComponent = () => import('../public/pages/page-not-found.component.vue');
 
 /**
  * @type {import('vue-router').RouteRecordRaw[]}
  * @description Application route definitions.
- * Each route object contains:
- * - path: URL path for the route
- * - name: Unique identifier for the route
- * - component: Vue component to render
- * - meta: Additional metadata including page title
  */
 const routes = [
-    {   path: '/home',                  name: 'home',               component: HomeComponent,               meta: {title: 'Home'}},
-    {   path: '/',                      name: 'default',            redirect: {name: 'home'}},
-    {   path: '/:pathMatch(.*)*',       name: 'not-found',          component: PageNotFoundComponent,       meta: {title: 'Page not found'}},
-]
+    { path: '/home',               name: 'home',       component: HomeComponent,                  meta: { title: 'Home' } },
+    { path: '/about',              name: 'about',      component: AboutComponent,                 meta: { title: 'About us' } },
+    { path: '/publishing/notifications', name: 'notifications', component: NotificationManagementComponent, meta: { title: 'Notifications' } },
+    { path: '/',                   name: 'default',    redirect: { name: 'home' } },
+    { path: '/:pathMatch(.*)*',    name: 'not-found',  component: PageNotFoundComponent,            meta: { title: 'Page not found' } },
+];
 
-/**
- * @type {import('vue-router').Router}
- * @description Vue Router instance configured with HTML5 history mode
- */
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
-    routes: routes,
-
+    routes
 });
 
-/**
- * @description Global navigation guard that runs before each route change
- * Handles:
- * - Navigation logging
- * - Dynamic page title updates based on route metadata
- *
- * @param {import('vue-router').RouteLocationNormalized} to - Target route
- * @param {import('vue-router').RouteLocationNormalized} from - Current route
- * @param {import('vue-router').NavigationGuardNext} next - Function to resolve the navigation
- */
-
+// Global navigation guard
 router.beforeEach((to, from, next) => {
     console.log(`Navigating from ${from.name} to ${to.name}`);
-    // Set the page title
-    let baseTitle = 'DyeTex';
-    document.title = `${baseTitle} | ${to.meta['title']}`;
+    document.title = `ACME Learning Center | ${to.meta.title}`;
     next();
 });
 

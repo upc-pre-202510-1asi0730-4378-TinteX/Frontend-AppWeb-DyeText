@@ -21,7 +21,7 @@ export default {
      * @required
      */
     items: {type: Array, required: true},
-    
+
     /**
      *
      * @property {String} singular - Singular form of the entity name (e.g., 'Category')
@@ -30,14 +30,14 @@ export default {
      * @required
      */
     title:  {type: { singular: '', plural: ''}, required: true},
-    
+
     /**
      *
      * @description Whether to dynamically generate columns based on the columns prop
      * @default false
      */
     dynamic: {type: Boolean, default: false},
-    
+
     /**
      *
      * @description Array of column definitions for dynamic columns
@@ -47,7 +47,7 @@ export default {
      */
     columns: {type: Array, default: []},
   },
-  
+
   /**
    * @event new-item-requested - Emitted when user clicks the "New" button
    * @event edit-item-requested - Emitted when user clicks the edit button for an item, includes the item data
@@ -55,7 +55,7 @@ export default {
    * @event delete-selected-items-requested - Emitted when user confirms deletion of selected items, includes an array of selected items
    */
   emits: ['new-item-requested', 'edit-item-requested', 'delete-item-requested', 'delete-selected-items-requested'],
-  
+
   /**
    * @returns {Object} Component data
    */
@@ -66,7 +66,7 @@ export default {
        * @description Array of currently selected items in the data table
        */
       selectedItems: [],
-      
+
       /**
        * @description Filter configuration for the data table
        */
@@ -81,14 +81,14 @@ export default {
     initFilters() {
       this.filters = {global: {value: null, matchMode: FilterMatchMode.CONTAINS}};
     },
-    
+
     /**
      * Handles the "New" button click and emits the new-item-requested event
      */
     newItem() {
       this.$emit('new-item-requested');
     },
-    
+
     /**
      * Shows a confirmation dialog for deleting selected items
      * If confirmed, emits the delete-selected-items-requested event with selected items
@@ -106,7 +106,7 @@ export default {
         reject:       () => {}
       });
     },
-    
+
     /**
      * Triggers CSV export of the current data table contents
      * Uses the PrimeVue DataTable exportCSV method
@@ -114,7 +114,7 @@ export default {
     exportToCsv() {
       this.$refs.dt.exportCSV()
     },
-    
+
     /**
      * Handles the edit button click for an item
      * @param {Object} item - The item to be edited
@@ -122,7 +122,7 @@ export default {
     editItem(item) {
       this.$emit('edit-item-requested', item);
     },
-    
+
     /**
      * Shows a confirmation dialog for deleting a single item
      * If confirmed, emits the delete-item-requested event with the item
@@ -142,7 +142,7 @@ export default {
       });
     },
   },
-  
+
   /**
    * Lifecycle hook called after the instance is created
    * Initializes the data table filters

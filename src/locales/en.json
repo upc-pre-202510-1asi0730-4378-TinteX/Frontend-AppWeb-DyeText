@@ -1,9 +1,9 @@
 {
   "option": {
     "home": "Home",
-    "monitoring": "Monitoring",
-    "maintenance": "Maintenance",
-    "data-analytics": "Data Analytics"
+    "about": "About",
+    "categories": "Notifications",
+    "alerts": "Alerts"
   },
   "authoring-phrase": {
     "intro": "Made with",

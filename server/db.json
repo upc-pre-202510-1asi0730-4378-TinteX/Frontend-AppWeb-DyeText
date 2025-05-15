@@ -1,12 +1,11 @@
 {
-  "categories": [
+  "notifications": [
     {
       "id": 1,
-      "name": "Vue.js"
-    },
-    {
-      "id": 2,
-      "name": "ASP.NET Core"
+      "message": "hola",
+      "dateTime": "df",
+      "textilMachine": "MáquinaTextil_002",
+      "markAsRead": true
     }
   ]
 }
