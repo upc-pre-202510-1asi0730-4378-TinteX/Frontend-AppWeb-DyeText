@@ -9,6 +9,12 @@ export default {
     goToMachineConfiguration() {
       this.$router.push({ name: "machine-configuration" });
     },
+    goToTasks() {
+      this.$router.push({ name: "UpcomingTasks" });
+    },
+    goToDelayedTasks() {
+      this.$router.push({ name: "DelayedTasks" });
+    },
   },
 };
 </script>
@@ -68,6 +74,17 @@ export default {
   </section>
   <section class="configure-machine">
     <button @click="goToMachineConfiguration">Configurar Máquina</button>
+  </section>
+  <section class="view-tasks">
+    <pv-button @click="goToTasks" class="mt-4">
+      <span>Ir a Tareas</span>
+      <i class="pi pi-angle-right" style="font-size: 1rem"></i>
+    </pv-button>
+    <pv-button @click="goToDelayedTasks" class="mt-4">
+
+      <span>Ver Tareas Atrasadas</span>
+      <i class="pi pi-angle-right" style="font-size: 1rem"></i>
+    </pv-button>
   </section>
 </template>
 
@@ -216,5 +233,11 @@ export default {
   button:hover {
     background-color: var(--button-hover-color);
   }
+}
+
+.view-tasks {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 </style>
