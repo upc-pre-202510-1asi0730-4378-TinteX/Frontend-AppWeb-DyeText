@@ -1,6 +1,6 @@
 import {createApp} from 'vue'
 import './style.css'
-import i18n from './i18n.js'
+import i18n from "./i18n.js";
 import {PrimeVue} from "@primevue/core";
 import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
@@ -33,11 +33,13 @@ import {
     ToastService,
     Toolbar
 } from "primevue";
+import pinia from "./pinia.js";
 import router from "./router/index.js";
 import App from "./App.vue";
 
 const app = createApp(App);
 app.use(i18n)
+    .use(pinia)
     .use(PrimeVue, {theme: { preset: Material}, ripple: true})
     .use(ConfirmationService)
     .use(DialogService)

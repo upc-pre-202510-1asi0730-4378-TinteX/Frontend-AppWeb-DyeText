@@ -3,7 +3,8 @@
     "home": "Inicio",
     "monitoring": "Monitoreo",
     "maintenance": "Mantenimiento",
-    "data-analytics": "Datos Analiticos"
+    "data-analytics": "Datos Analiticos",
+    "assign-user": "Asignar Usuario"
   },
   "authoring-phrase": {
     "intro": "Hecho con",
