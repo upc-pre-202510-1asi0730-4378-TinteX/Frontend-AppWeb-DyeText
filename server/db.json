@@ -1,12 +1,34 @@
 {
-  "categories": [
+  "assignUser": [
     {
       "id": 1,
-      "name": "Vue.js"
+      "name": "Hector",
+      "email": "hectorRios@gmail.com",
+      "phone": "941234056",
+      "start_date": "01/03/2025",
+      "plant": "tercera planta",
+      "role": "tecnico",
+      "permission": "monitoreo"
     },
     {
       "id": 2,
-      "name": "ASP.NET Core"
+      "name": "Jude",
+      "email": "jude123@gmail.com",
+      "phone": "953412423",
+      "start_date": "01/05/2025",
+      "plant": "segunda planta",
+      "role": "tecnico",
+      "permission": "reportes"
+    },
+    {
+      "id": 3,
+      "name": "Ricardo",
+      "email": "Ricardito435@gmail.com",
+      "phone": "904213590",
+      "start_date": "30/02/2027",
+      "plant": "cuarta planta",
+      "role": "tecnico",
+      "permission": "monitoreo"
     }
   ]
 }
