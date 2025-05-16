@@ -14,7 +14,7 @@ import {createRouter, createWebHistory} from "vue-router";
 const HomeComponent = () => import('./src/public/pages/home.component.vue');
 const Monitoring = () => import('./src/monitoring/pages/textilMachine-management.component.vue');
 const PageNotFoundComponent = () => import('./src/public/pages/page-not-found.component.vue');
-
+const AssignUsersManagementComponent = () => import('../assignUsers/pages/assign-user.management.component.vue');
 /**
  * @type {import('vue-router').RouteRecordRaw[]}
  * @description Application route definitions.
@@ -27,6 +27,7 @@ const PageNotFoundComponent = () => import('./src/public/pages/page-not-found.co
 const routes = [
     {   path: '/home',                  name: 'home',               component: HomeComponent,               meta: {title: 'Home'}},
     {   path: '/monitoring',                  name: 'Monitoring',               component: Monitoring,               meta: {title: 'Monitoring'}},
+    {   path: '/assignUser',            name: 'assignUser',         component: AssignUsersManagementComponent, meta: {title: 'AssignUser'}},
     {   path: '/',                      name: 'default',            redirect: {name: 'home'}},
     {   path: '/:pathMatch(.*)*',       name: 'not-found',          component: PageNotFoundComponent,       meta: {title: 'Page not found'}},
 ]
