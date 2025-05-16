@@ -3,7 +3,7 @@ import TextilMachineSearchContent from "../component/textilMachine-item-search.c
 import TextilMachineCreateComponent from "../component/textilMachine-item-create.component.vue";
 import {TextileMachine} from "../model/textileMachine.entity.js";
 import {TextileMachineService} from "../services/textilMachine.service.js";
-import DataManager from "../../../../frontend_dyetex/src/shared/components/data-manager.component.vue";
+import DataManager from "../../shared/components/data-manager.component.vue";
 
 export default {
   name: "textilMachine-management",

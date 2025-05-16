@@ -11,9 +11,9 @@ import {createRouter, createWebHistory} from "vue-router";
  * Using dynamic imports to enable code splitting and improve initial load performance
  */
 
-const HomeComponent = () => import('./src/public/pages/home.component.vue');
-const Monitoring = () => import('./src/monitoring/pages/textilMachine-management.component.vue');
-const PageNotFoundComponent = () => import('./src/public/pages/page-not-found.component.vue');
+const HomeComponent = () => import('../public/pages/home.component.vue');
+const Monitoring = () => import('../monitoring/pages/textilMachine-management.component.vue');
+const PageNotFoundComponent = () => import('../public/pages/page-not-found.component.vue');
 const AssignUsersManagementComponent = () => import('../assignUsers/pages/assign-user.management.component.vue');
 /**
  * @type {import('vue-router').RouteRecordRaw[]}

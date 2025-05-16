@@ -1,4 +1,4 @@
-import httpInstance from "../../../../frontend_dyetex/src/shared/services/http.instance.js";
+import httpInstance from "../../shared/services/http.instance.js";
 
 export  class TextileMachineService{
     resourceEndpoint = import.meta.env.VITE_MACHINESTATUS_ENDPOINT_PATH;
