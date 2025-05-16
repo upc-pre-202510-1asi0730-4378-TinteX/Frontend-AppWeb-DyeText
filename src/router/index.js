@@ -14,7 +14,11 @@ import {createRouter, createWebHistory} from "vue-router";
 const HomeComponent = () => import('../public/pages/home.component.vue');
 const PageNotFoundComponent = () => import('../public/pages/page-not-found.component.vue');
 
+const HomeComponent = () => import('../../../frontend_dyetex/src/public/pages/home.component.vue');
+const Monitoring = () => import('../../../frontend_dyetex/src/monitoring/pages/textilMachine-management.component.vue');
+const PageNotFoundComponent = () => import('../../../frontend_dyetex/src/public/pages/page-not-found.component.vue');
 const AssignUsersManagementComponent = () => import('../publishing/pages/assign-user.management.component.vue');
+
 
 /**
  * @type {import('vue-router').RouteRecordRaw[]}
@@ -28,6 +32,7 @@ const AssignUsersManagementComponent = () => import('../publishing/pages/assign-
 const routes = [
     {   path: '/home',                  name: 'home',               component: HomeComponent,               meta: {title: 'Home'}},
     {   path: '/assignUser',            name: 'assignUser',         component: AssignUsersManagementComponent, meta: {title: 'AssignUser'}},
+    {   path: '/monitoring',                  name: 'Monitoring',               component: Monitoring,               meta: {title: 'Monitoring'}},
     {   path: '/',                      name: 'default',            redirect: {name: 'home'}},
     {   path: '/:pathMatch(.*)*',       name: 'not-found',          component: PageNotFoundComponent,       meta: {title: 'Page not found'}},
 ]
