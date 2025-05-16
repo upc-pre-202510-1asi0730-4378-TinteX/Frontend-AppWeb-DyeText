@@ -13,7 +13,8 @@
          {label: "option.monitoring", to: "/monitoring"},
          {label: "option.maintenance", to: "/maintenance"},
          {label: "option.data-analytics", to: "/data-analytics"},
-        {label: "option.assign-user", to: "/assignUser"}
+        {label: "option.assign-user", to: "/assignUser"},
+         { label: 'option.categories', to: '/publishing/notifications' }
        ]
      }
    },

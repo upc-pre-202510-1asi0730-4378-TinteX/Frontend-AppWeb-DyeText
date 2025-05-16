@@ -76,5 +76,15 @@
       "description": "Cambiar hilos",
       "status": "pending"
     }
+  ],
+
+  "notifications": [
+    {
+      "id": 1,
+      "message": "Maquina con exceso de temperatura",
+      "dateTime": "15/05/2025",
+      "textilMachine": "MáquinaTextil_001",
+      "markAsRead": true
+    }
   ]
 }

@@ -4,6 +4,7 @@
     "monitoring": "Monitoring",
     "maintenance": "Maintenance",
     "data-analytics": "Data Analytics",
+    "categories": "Notifications",
     "assign-user": "Assign User"
   },
   "authoring-phrase": {
@@ -12,3 +13,5 @@
     "author": "by {brand} Developer Team"
   }
 }
+
+

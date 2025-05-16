@@ -12,6 +12,7 @@ import {createRouter, createWebHistory} from "vue-router";
  */
 
 const HomeComponent = () => import('../public/pages/home.component.vue');
+const NotificationManagementComponent = () => import('../alertSystem/pages/notification-management.component.vue');
 const Monitoring = () => import('../monitoring/pages/textilMachine-management.component.vue');
 const PageNotFoundComponent = () => import('../public/pages/page-not-found.component.vue');
 const AssignUsersManagementComponent = () => import('../assignUsers/pages/assign-user.management.component.vue');
@@ -26,6 +27,7 @@ const AssignUsersManagementComponent = () => import('../assignUsers/pages/assign
  */
 const routes = [
     {   path: '/home',                  name: 'home',               component: HomeComponent,               meta: {title: 'Home'}},
+    {   path: '/publishing/notifications', name: 'notifications', component: NotificationManagementComponent, meta: { title: 'Notifications' } },
     {   path: '/monitoring',                  name: 'Monitoring',               component: Monitoring,               meta: {title: 'Monitoring'}},
     {   path: '/assignUser',            name: 'assignUser',         component: AssignUsersManagementComponent, meta: {title: 'AssignUser'}},
     {   path: '/',                      name: 'default',            redirect: {name: 'home'}},
