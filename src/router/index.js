@@ -2,18 +2,18 @@
  * @fileoverview Router configuration for the ACME Learning Center application
  * Defines all routes and navigation behavior for the application
  */
-import ConfigurationPage from '../machine-configuration/pages/ConfigurationPage.vue';
+
 import {createRouter, createWebHistory} from "vue-router";
-import UpcomingTasks from "../task/component/UpcomingTasks.vue";
-import DelayedTasks from "../task/component/DelayedTasks.vue";
+
 
 /**
  * @description Lazy-loaded component imports for route configuration
  * Using dynamic imports to enable code splitting and improve initial load performance
  */
 
-const HomeComponent = () => import('/src/public/pages/home.component.vue');
-const PageNotFoundComponent = () => import('/src/public/pages/page-not-found.component.vue');
+const HomeComponent = () => import('../../../frontend_dyetex/src/public/pages/home.component.vue');
+const Monitoring = () => import('../../../frontend_dyetex/src/monitoring/pages/textilMachine-management.component.vue');
+const PageNotFoundComponent = () => import('../../../frontend_dyetex/src/public/pages/page-not-found.component.vue');
 
 /**
  * @type {import('vue-router').RouteRecordRaw[]}
@@ -26,16 +26,9 @@ const PageNotFoundComponent = () => import('/src/public/pages/page-not-found.com
  */
 const routes = [
     {   path: '/home',                  name: 'home',               component: HomeComponent,               meta: {title: 'Home'}},
+    {   path: '/monitoring',                  name: 'Monitoring',               component: Monitoring,               meta: {title: 'Monitoring'}},
     {   path: '/',                      name: 'default',            redirect: {name: 'home'}},
     {   path: '/:pathMatch(.*)*',       name: 'not-found',          component: PageNotFoundComponent,       meta: {title: 'Page not found'}},
-    {   path: '/machine-configuration', name: 'machine-configuration', component: ConfigurationPage },
-    {
-        path: '/tasks',
-        name: 'UpcomingTasks',
-        component: UpcomingTasks,
-    },
-    { path: '/delayed-tasks', name: 'DelayedTasks', component: DelayedTasks },
-
 ]
 
 /**
@@ -45,6 +38,7 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: routes,
+
 });
 
 /**

@@ -1,6 +1,6 @@
 import {createApp} from 'vue'
 import './style.css'
-import i18n from './i18n.js'
+import i18n from "../../frontend_dyetex/src/i18n.js";
 import {PrimeVue} from "@primevue/core";
 import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
