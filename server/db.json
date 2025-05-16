@@ -85,6 +85,48 @@
       "dateTime": "15/05/2025",
       "textilMachine": "MáquinaTextil_001",
       "markAsRead": true
-    }
+    },
+    {
+    "id": 2,
+    "message": "Vibración fuera de rango detectada",
+    "dateTime": "2025-05-16T10:45:00",
+    "textilMachine": "1",
+    "markAsRead": false
+  },
+  {
+    "id": 3,
+    "message": "Presión hidráulica baja",
+    "dateTime": "2025-05-16T11:02:00",
+    "textilMachine": "3",
+    "markAsRead": true
+  },
+  {
+    "id": 4,
+    "message": "Temperatura anormal detectada",
+    "dateTime": "2025-05-16T11:30:00",
+    "textilMachine": "2",
+    "markAsRead": false
+  },
+  {
+    "id": 5,
+    "message": "Desfase eléctrico registrado",
+    "dateTime": "2025-05-16T12:15:00",
+    "textilMachine": "4",
+    "markAsRead": false
+  },
+  {
+    "id": 6,
+    "message": "Tiempo de operación excedido",
+    "dateTime": "2025-05-16T12:45:00",
+    "textilMachine": "1",
+    "markAsRead": true
+  },
+  {
+    "id": 7,
+    "message": "Sensor de humedad desconectado",
+    "dateTime": "2025-05-16T13:05:00",
+    "textilMachine": "3",
+    "markAsRead": false
+  }
   ]
 }
