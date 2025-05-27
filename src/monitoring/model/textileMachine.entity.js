@@ -5,14 +5,15 @@
 
 export class TextileMachine {
 
-    constructor({id='', name='', status='', numberMachine='',floor='',zone='',dateInstalation=''}){
+    constructor({id='', name='', asset_type='', status='', number_machine='',floor='',zone='',date_installation=''}){
         this.id = id;
         this.name = name;
+        this.asset_type = asset_type;
         this.status = status;
-        this.numberMachine = numberMachine;
+        this.number_machine = number_machine;
         this.floor = floor;
         this.zone = zone;
-        this.dateInstalation = dateInstalation;
+        this.date_installation = date_installation;
     }
 
 }
