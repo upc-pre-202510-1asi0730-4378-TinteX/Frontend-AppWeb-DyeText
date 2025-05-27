@@ -1,9 +1,24 @@
 <script>
 import CreateAndEdit from "../../shared/components/create-and-edit.component.vue";
+import {TextileMachineService} from "../services/textilMachine.service.js";
+import {TextileMachine} from "../model/textileMachine.entity.js";
+import {uuid} from "@primevue/core";
 
 export default {
   name: "textilMachine-create-component",
   components: { CreateAndEdit},
+  data(){
+    return {
+      submitted: false,
+      textileMachines: [],
+      textileMachineService: null,
+      name: '',
+      zone: '',
+      floor: '',
+      type: '',
+      numberMachine: '',
+    }
+  },
   props: {
     item: null,
     visible: false,
@@ -12,104 +27,146 @@ export default {
       default: () => []
     }
   },
-
   emits: ['cancel-requested', 'save-requested'],
-
-  data(){
-    return {
-      submitted: false,
-    }
-  },
-
   methods: {
     onCancelRequested(){
       this.$emit('cancel-requested');
     },
 
     onSaveRequested(){
+
       this.submitted = true;
       this.$emit('save-requested', this.item);
-    },
 
+      const id = uuid()
+      const status = ["Operational","Under Maintenance","Offline"];
+
+      const newMachine = {
+        id: id,
+        name: this.name,
+        asset_type: this.type,
+        status: status[Math.floor(Math.random() * status.length)],
+        number_machine: this.numberMachine,
+        floor: this.floor,
+        zone: this.zone,
+        date_installation: new Date().toDateString(),
+      }
+
+      this.textileMachineService.create(newMachine)
+    },
+  },
+  created() {
+    this.textileMachineService = new TextileMachineService();
+
+    this.textileMachineService.getAll().then((response) => {
+      this.textileMachines = response.map(elem => new TextileMachine(elem));
+      console.log(this.textileMachines);
+    }).catch((error) => {console.log(error)});
   }
 }
 </script>
 
 <template>
-  <div>
-    <create-and-edit :entity="item" :visible="visible" entity-name="TextileMachine"
-                     @cancel-action-requested="onCancelRequested"
-                     @save-action-requested="onSaveRequested">
-      <template #content>
-        <div class="pi-fluid">
-          <div class="field mt-5">
-            <pv-float-label>
-              <label for="name">Name</label>
-              <pv-input-text id="name" v-model="item.name" :class="{'p-invalid': submitted && !item.name}"></pv-input-text>
-            </pv-float-label>
-          </div>
-
-          <div class="field">
-            <pv-float-label>
-              <label for="numberMachine">Number Machine</label>
-              <pv-input-text id="numberMachine" v-model="item.numberMachine" :class="{'p-invalid': submitted && !item.numberMachine}"></pv-input-text>
-            </pv-float-label>
-          </div>
-
-          <div class="field">
-            <pv-float-label>
-              <label for="floor">floor</label>
-              <pv-input-text id="floor" v-model="item.floor" :class="{'p-invalid': submitted && !item.floor}"></pv-input-text>
-            </pv-float-label>
-          </div>
-
-          <div class="field">
-            <pv-float-label>
-              <label for="zone">zone</label>
-              <pv-input-text id="zone" v-model="item.zone" :class="{'p-invalid': submitted && !item.zone}"></pv-input-text>
-            </pv-float-label>
-          </div>
-        </div>
-      </template>
-    </create-and-edit>
+  <div :class="['add-machine-container', visible ? 'return-to-show' : 'return-to-hide']"  >
+    <button class="icon-btn" @click="onCancelRequested">
+      <i class="pi pi-plus-circle"></i>
+    </button>
+   <form @submit.prevent="onSaveRequested" class="form-add-machine">
+     <h2>{{ $t('add') }} {{ $t('machine') }}</h2>
+     <div class="form-group">
+       <label for="name">{{ $t('monitoring.name') }}</label>
+       <input id="name" type="text" v-model="name" required/>
+     </div>
+     <div class="form-group">
+       <label for="number-machine">{{ $t('monitoring.number') }} <br> Machine</label>
+       <input id="number-machine" type="text" v-model="numberMachine" required/>
+     </div>
+     <div class="form-group">
+       <label for="floor">{{ $t('monitoring.floor') }}</label>
+       <input id="floor" type="text" v-model="floor" required/>
+     </div>
+     <div class="form-group">
+       <label for="zone">{{ $t('monitoring.zone') }}</label>
+       <input id="zone" type="text" v-model="zone" required/>
+     </div>
+     <div class="form-group">
+       <label for="type">{{ $t('monitoring.asset-type') }}</label>
+       <input id="type" type="text" v-model="type" required/>
+     </div>
+     <button role="button" type="button" class="btn-form"  @click="onSaveRequested">
+       {{ $t('monitoring.register') }}
+     </button>
+   </form>
   </div>
-
 </template>
 
 <style scoped>
 
-.device-historical{
-  margin-top: 10px;
-}
-
-pv-float-label{
-  margin: 10px 0;
-}
-
-.device-list {
+.add-machine-container{
+  background: rgba(0, 0, 0, 0.71);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  justify-content: center;
+
+  .icon-btn{
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    background: #CCE6FF;
+  }
+
+  .pi-plus-circle{
+    transform: rotateZ(135deg);
+    font-size: 50px;
+    color: #1a1a1a;
+  }
+
+  form{
+    width: 25rem;
+    background: #ffffff;
+    color: #000000;
+    margin: 10rem auto;
+    padding: 1.5rem;
+    border-radius: 10px;
+
+    button{
+      margin-top: 10px;
+    }
+  }
+
+  .form-group{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+  }
+
+  label{
+    margin-right: 20px;
+  }
+
+  input{
+    background: #66b2ff;
+    border-radius: 10px;
+    border: none;
+    color: black;
+    padding: 10px;
+    &:focus{
+      outline: none;
+    }
+  }
 }
 
-.device-card {
-  background-color: #e6f0ff;
-  border-radius: 12px;
-  padding: 1rem;
-  width: 200px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+.return-to-hide{
+  display: none;
 }
 
-
-.device-info h3 {
-  font-size: 1rem;
-  margin-top: 0.5rem;
+.return-to-show{
+  display: block;
 }
 
-.device-info p {
-  margin: 0.25rem 0 0;
-  color: #333;
-  font-size: 0.9rem;
-}
 </style>
