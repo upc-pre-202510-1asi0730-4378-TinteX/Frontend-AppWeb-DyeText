@@ -65,20 +65,7 @@ export default {
   >
     <template #content>
       <div class="form-content">
-        <!-- ID -->
-        <div class="field">
-          <pv-float-label>
-            <label for="id">ID</label>
-            <pv-input-text
-                id="id"
-                v-model="localItem.id"
-                :disabled="Boolean(localItem.id)"
-            />
-          </pv-float-label>
-        </div>
 
-
-        <!-- Message -->
         <div class="field">
           <pv-float-label>
             <label for="message">Message</label>
