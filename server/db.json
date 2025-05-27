@@ -77,56 +77,76 @@
       "status": "pending"
     }
   ],
-
   "notifications": [
     {
       "id": 1,
-      "message": "Maquina con exceso de temperatura",
-      "dateTime": "15/05/2025",
+      "message": "Vibración fuera de rango detectada",
+      "dateTime": "2025-05-16T10:45:00",
+      "textilMachine": "MáquinaTextil_001",
+      "markAsRead": false
+    },
+    {
+      "id": 2,
+      "message": "Presión hidráulica baja",
+      "dateTime": "2025-05-16T11:02:00",
+      "textilMachine": "MáquinaTextil_003",
+      "markAsRead": true
+    },
+    {
+      "id": 3,
+      "message": "Temperatura anormal detectada",
+      "dateTime": "2023-12-31T23:59:59",
+      "textilMachine": "MáquinaTextil_002",
+      "markAsRead": true
+    },
+    {
+      "id": 4,
+      "message": "Desfase eléctrico registrado",
+      "dateTime": "2025-05-16T12:15:00",
+      "textilMachine": "MáquinaTextil_004",
+      "markAsRead": false
+    },
+    {
+      "id": 5,
+      "message": "Tiempo de operación excedido",
+      "dateTime": "2025-05-16T12:45:00",
       "textilMachine": "MáquinaTextil_001",
       "markAsRead": true
     },
     {
-    "id": 2,
-    "message": "Vibración fuera de rango detectada",
-    "dateTime": "2025-05-16T10:45:00",
-    "textilMachine": "1",
-    "markAsRead": false
-  },
-  {
-    "id": 3,
-    "message": "Presión hidráulica baja",
-    "dateTime": "2025-05-16T11:02:00",
-    "textilMachine": "3",
-    "markAsRead": true
-  },
-  {
-    "id": 4,
-    "message": "Temperatura anormal detectada",
-    "dateTime": "2025-05-16T11:30:00",
-    "textilMachine": "2",
-    "markAsRead": false
-  },
-  {
-    "id": 5,
-    "message": "Desfase eléctrico registrado",
-    "dateTime": "2025-05-16T12:15:00",
-    "textilMachine": "4",
-    "markAsRead": false
-  },
-  {
-    "id": 6,
-    "message": "Tiempo de operación excedido",
-    "dateTime": "2025-05-16T12:45:00",
-    "textilMachine": "1",
-    "markAsRead": true
-  },
-  {
-    "id": 7,
-    "message": "Sensor de humedad desconectado",
-    "dateTime": "2025-05-16T13:05:00",
-    "textilMachine": "3",
-    "markAsRead": false
-  }
+      "id": 6,
+      "message": "Sensor de humedad desconectado",
+      "dateTime": "2025-05-16T13:05:00",
+      "textilMachine": "MáquinaTextil_003",
+      "markAsRead": false
+    },
+    {
+      "id": 7,
+      "message": "Error general del sistema",
+      "dateTime": "2025-05-16T14:00:00",
+      "textilMachine": "MáquinaTextil_005",
+      "markAsRead": true
+    },
+    {
+      "id": 8,
+      "message": "Chequeo de rutina completado",
+      "dateTime": "2025-05-16T15:00:00",
+      "textilMachine": "MáquinaTextil_006",
+      "markAsRead": true
+    },
+    {
+      "id": 9,
+      "message": "Fallo en sensor de temperatura",
+      "dateTime": "2025-05-16T16:00:00",
+      "textilMachine": "MáquinaTextil_002",
+      "markAsRead": true
+    },
+    {
+      "id": 10,
+      "message": "Desconexión de red detectada",
+      "dateTime": "2025-05-16T17:00:00",
+      "textilMachine": "MáquinaTextil_005",
+      "markAsRead": true
+    }
   ]
 }
