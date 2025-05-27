@@ -1,29 +1,29 @@
 import httpInstance from "../../shared/services/http.instance.js";
 
-export  class TextileMachineService{
-    resourceEndpoint = import.meta.env.VITE_MACHINESTATUS_ENDPOINT_PATH;
+export class TextileMachineService{
+    resourceEndPoint = import.meta.env.VITE_TEXTILE_MACHINES_ENDPOINT_PATH;
 
     getAll() {
-        return httpInstance.get(this.resourceEndpoint);
+        return httpInstance.get(this.resourceEndPoint);
     }
 
     getById(id) {
-        return httpInstance.get(`${this.resourceEndpoint}/${id}`);
+        return httpInstance.get(`${this.resourceEndPoint}/${id}`);
     }
 
     create(resource) {
-        return httpInstance.post(this.resourceEndpoint, resource);
+        return httpInstance.post(this.resourceEndPoint, resource);
     }
 
     update(id, resource) {
-        return httpInstance.put(`${this.resourceEndpoint}/${id}`, resource);
+        return httpInstance.put(`${this.resourceEndPoint}/${id}`, resource);
     }
 
     delete(id) {
-        return httpInstance.delete(`${this.resourceEndpoint}/${id}`);
+        return httpInstance.delete(`${this.resourceEndPoint}/${id}`);
     }
 
     getByName(name) {
-        return httpInstance.get(`${this.resourceEndpoint}?name=${name}`);
+        return httpInstance.get(`${this.resourceEndPoint}?name=${name}`);
     }
 }

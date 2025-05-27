@@ -11,5 +11,31 @@
     "intro": "Hecho con",
     "use": "utilizando",
     "author": "por el Equipo de Desarrollo de {brand}"
-  }
+  },
+  "home": {
+    "lastest-alerts": "Alertas recientes",
+    "view-more": "Ver más",
+    "healthy-machines": "Máquinas en buen estado",
+    "total-machines": "Total de máquinas",
+    "overall-m-h": "Salud general de las máquinas",
+    "status": "Estado",
+    "machine-insights": "Información de máquinas"
+  },
+  "welcome-to": "Bienvenido a",
+  "machine": "Máquina",
+  "monitoring": {
+    "status": "Estado",
+    "floor": "Piso",
+    "zone": "Zona",
+    "name": "Nombre",
+    "number": "Número",
+    "date-installation": "Fecha de instalación",
+    "register": "Registrar",
+    "asset-type": "Tipo de activo",
+    "available-machines": "Máquinas disponibles",
+    "last-activity": "Última actividad",
+    "featured-machines": "Máquinas destacadas"
+  },
+  "new": "Nuevo",
+  "add": "Agregar"
 }

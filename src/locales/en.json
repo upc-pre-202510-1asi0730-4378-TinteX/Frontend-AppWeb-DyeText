@@ -11,7 +11,33 @@
     "intro": "Made with",
     "use": "using",
     "author": "by {brand} Developer Team"
-  }
+  },
+  "home": {
+    "lastest-alerts": "Lastest Alerts",
+    "view-more": "View more",
+    "healthy-machines": "Healthy Machines",
+    "total-machines": "Total Machines",
+    "overall-m-h": "Overall Machine Health",
+    "status": "Status",
+    "machine-insights": "Machine Insights"
+  },
+  "welcome-to": "Welcome to",
+  "machine": "Machine",
+  "monitoring": {
+    "status": "Status",
+    "floor": "Floor",
+    "zone": "Zone",
+    "name": "Name",
+    "number": "Number",
+    "date-installation": "Date Installation",
+    "register": "Register",
+    "asset-type": "Asset Type",
+    "available-machines": "Available Machines",
+    "last-activity": "Last activity",
+    "featured-machines": "Featured Machines"
+  },
+  "new": "New",
+  "add": "Add"
 }
 
 
