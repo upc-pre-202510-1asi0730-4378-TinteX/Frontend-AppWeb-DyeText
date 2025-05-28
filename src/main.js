@@ -1,6 +1,6 @@
 import {createApp} from 'vue'
 import './style.css'
-import i18n from './i18n.js'
+import i18n from "./i18n.js";
 import {PrimeVue} from "@primevue/core";
 import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
@@ -35,6 +35,7 @@ import {
 } from "primevue";
 import router from "./router/index.js";
 import App from "./App.vue";
+import pinia from "./pinia.js";
 
 const app = createApp(App);
 app.use(i18n)
@@ -65,5 +66,6 @@ app.use(i18n)
     .component('pv-textarea',       Textarea)
     .component('pv-toolbar',        Toolbar)
     .component('pv-toast',          Toast)
+    .use(pinia)
     .use(router)
     .mount('#app')

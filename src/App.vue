@@ -1,3 +1,4 @@
+
 <script>
  import LanguageSwitcher from "./public/components/language-switcher.component.vue";
  import {defineComponent} from "vue";
@@ -13,6 +14,8 @@
          {label: "option.monitoring", to: "/monitoring"},
          {label: "option.maintenance", to: "/maintenance"},
          {label: "option.data-analytics", to: "/data-analytics"},
+        {label: "option.assign-user", to: "/assignUser"},
+         { label: 'option.categories', to: '/publishing/notifications' }
        ]
      }
    },

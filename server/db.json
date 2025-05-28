@@ -1,12 +1,263 @@
 {
-  "categories": [
+  "assignUser": [
     {
       "id": 1,
-      "name": "Vue.js"
+      "name": "Hector",
+      "email": "hectorRios@gmail.com",
+      "phone": "941234056",
+      "start_date": "01/03/2025",
+      "plant": "tercera planta",
+      "role": "tecnico",
+      "permission": "monitoreo"
     },
     {
       "id": 2,
-      "name": "ASP.NET Core"
+      "name": "Jude",
+      "email": "jude123@gmail.com",
+      "phone": "953412423",
+      "start_date": "01/05/2025",
+      "plant": "segunda planta",
+      "role": "tecnico",
+      "permission": "reportes"
+    },
+    {
+      "id": 3,
+      "name": "Ricardo",
+      "email": "Ricardito435@gmail.com",
+      "phone": "904213590",
+      "start_date": "30/02/2027",
+      "plant": "cuarta planta",
+      "role": "tecnico",
+      "permission": "monitoreo"
+    },
+    {
+      "protocol": "HTTP",
+      "ipAddress": "123456",
+      "networkId": "",
+      "updateFrequency": 2,
+      "id": 4
+    },
+    {
+      "name": "",
+      "protocol": "HTTP",
+      "updateFrequency": 1,
+      "id": 5
+    },
+    {
+      "name": "",
+      "protocol": "HTTP",
+      "updateFrequency": 3,
+      "id": 6
+    },
+    {
+      "name": "",
+      "protocol": "HTTP",
+      "updateFrequency": 3,
+      "id": 7
+    },
+    {
+      "name": "",
+      "protocol": "HTTP",
+      "updateFrequency": 1,
+      "id": 8
+    },
+    {
+      "name": "",
+      "protocol": "HTTP",
+      "updateFrequency": 1,
+      "id": 9
+    },
+    {
+      "name": "",
+      "protocol": "HTTP",
+      "updateFrequency": 1,
+      "id": 10
+    },
+    {
+      "name": "",
+      "protocol": "HTTP",
+      "updateFrequency": 0,
+      "id": 11
+    }
+  ],
+  "machine_information": [
+    {
+      "id": "1",
+      "textil_machine": 101,
+      "time_spent": "02:30:00",
+      "day_progress": 75.5,
+      "failiture_rate": 2.5,
+      "amount_failure": 3,
+      "user_id": "user_1"
+    },
+    {
+      "id": "2",
+      "textil_machine": 102,
+      "time_spent": "01:15:00",
+      "day_progress": 50,
+      "failiture_rate": 1,
+      "amount_failure": 1,
+      "user_id": "user_2"
+    }
+  ],
+  "textile_machines": [
+    {
+      "id": "8d7e0f42-4e8f-41c0-8d2e-61a91adf908f",
+      "name": "Weaving Machine A",
+      "asset_type": "Weaving",
+      "status": "Operational",
+      "number_machine": "WM-1001",
+      "floor": "1",
+      "zone": "North Wing",
+      "date_installation": "2022-03-15"
+    },
+    {
+      "id": "3a7b7c6d-1c8e-47bc-b6d7-843d4f1ac8c0",
+      "name": "Knitting Machine B",
+      "asset_type": "Knitting",
+      "status": "Under Maintenance",
+      "number_machine": "KM-2020",
+      "floor": "2",
+      "zone": "East Wing",
+      "date_installation": "2021-08-10"
+    },
+    {
+      "id": "59a947fa-f33b-4960-80a7-e4b57a37c45a",
+      "name": "Dyeing Machine C",
+      "asset_type": "Dyeing",
+      "status": "Critical",
+      "number_machine": "DM-3305",
+      "floor": "1",
+      "zone": "South Sector",
+      "date_installation": "2023-01-05"
+    },
+    {
+      "id": "e9c90220-82f2-47e7-bb7c-147cb2d2d634",
+      "name": "Finishing Machine D",
+      "asset_type": "Finishing",
+      "status": "Offline",
+      "number_machine": "FM-4487",
+      "floor": "3",
+      "zone": "West Wing",
+      "date_installation": "2020-11-23"
+    },
+    {
+      "id": "ab3b790e-0b25-4d3e-b3b7-196db8243a61",
+      "name": "Cutting Machine E",
+      "asset_type": "Cutting",
+      "status": "Operational",
+      "number_machine": "CM-7789",
+      "floor": "2",
+      "zone": "Central Hall",
+      "date_installation": "2022-07-19"
+    },
+    {
+      "id": "pui_id_1",
+      "name": "a",
+      "asset_type": "Unknown",
+      "status": "Under Maintenance",
+      "number_machine": "a",
+      "floor": "a",
+      "zone": "a",
+      "date_installation": "Mon May 26 2025"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "task_1",
+      "machine_id": "1",
+      "description": "Revisar motor",
+      "status": "pending"
+    },
+    {
+      "id": "task_2",
+      "machine_id": "2",
+      "description": "Cambiar filtro",
+      "status": "completed"
+    },
+    {
+      "id": "6bbf",
+      "machineId": "1",
+      "description": "Cambiar hilos",
+      "status": "pending"
+    },
+    {
+      "id": "8852",
+      "machineId": "1",
+      "description": "Cambiar hilos",
+      "status": "pending"
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "message": "Vibración fuera de rango detectada",
+      "dateTime": "2025-05-16T10:45:00",
+      "textilMachine": "MáquinaTextil_001",
+      "markAsRead": false
+    },
+    {
+      "id": 2,
+      "message": "Presión hidráulica baja",
+      "dateTime": "2025-05-16T11:02:00",
+      "textilMachine": "MáquinaTextil_003",
+      "markAsRead": true
+    },
+    {
+      "id": 3,
+      "message": "Temperatura anormal detectada",
+      "dateTime": "2023-12-31T23:59:59",
+      "textilMachine": "MáquinaTextil_002",
+      "markAsRead": true
+    },
+    {
+      "id": 4,
+      "message": "Desfase eléctrico registrado",
+      "dateTime": "2025-05-16T12:15:00",
+      "textilMachine": "MáquinaTextil_004",
+      "markAsRead": false
+    },
+    {
+      "id": 5,
+      "message": "Tiempo de operación excedido",
+      "dateTime": "2025-05-16T12:45:00",
+      "textilMachine": "MáquinaTextil_001",
+      "markAsRead": true
+    },
+    {
+      "id": 6,
+      "message": "Sensor de humedad desconectado",
+      "dateTime": "2025-05-16T13:05:00",
+      "textilMachine": "MáquinaTextil_003",
+      "markAsRead": false
+    },
+    {
+      "id": 7,
+      "message": "Error general del sistema",
+      "dateTime": "2025-05-16T14:00:00",
+      "textilMachine": "MáquinaTextil_005",
+      "markAsRead": true
+    },
+    {
+      "id": 8,
+      "message": "Chequeo de rutina completado",
+      "dateTime": "2025-05-16T15:00:00",
+      "textilMachine": "MáquinaTextil_006",
+      "markAsRead": true
+    },
+    {
+      "id": 9,
+      "message": "Fallo en sensor de temperatura",
+      "dateTime": "2025-05-16T16:00:00",
+      "textilMachine": "MáquinaTextil_002",
+      "markAsRead": true
+    },
+    {
+      "id": 10,
+      "message": "Desconexión de red detectada",
+      "dateTime": "2025-05-16T17:00:00",
+      "textilMachine": "MáquinaTextil_005",
+      "markAsRead": true
     }
   ]
 }
