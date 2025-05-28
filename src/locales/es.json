@@ -36,6 +36,16 @@
     "last-activity": "Última actividad",
     "featured-machines": "Máquinas destacadas"
   },
+  "alertSystem": {
+    "notification": "Notificación",
+    "notifications": "Notificaciones",
+    "message": "Mensaje",
+    "dateTime": "Fecha y hora",
+    "textilMachine": "Máquina textil",
+    "markAsRead": "Leida",
+    "created": "Notificación creada",
+    "deleted": "Notificación eliminada"
+  },
   "new": "Nuevo",
   "add": "Agregar"
 }

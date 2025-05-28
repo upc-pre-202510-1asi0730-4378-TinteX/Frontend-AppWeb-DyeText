@@ -36,6 +36,17 @@
     "last-activity": "Last activity",
     "featured-machines": "Featured Machines"
   },
+  "alertSystem":{
+    "notification": "Notification",
+    "notifications": "Notifications",
+    "message": "Message",
+    "dateTime": "Date & Time",
+    "textilMachine": "Textil Machine",
+    "markAsRead":"Read",
+    "created": "Notification created",
+    "deleted": "Notification deleted"
+  },
+
   "new": "New",
   "add": "Add"
 }
