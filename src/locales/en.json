@@ -46,7 +46,26 @@
     "created": "Notification created",
     "deleted": "Notification deleted"
   },
-
+  "maintenance": {
+    "estimated-failure": "Estimated time to Failure",
+    "days": "days",
+    "asset": "Asset",
+    "current-status": "Current Operating Status",
+    "time-spent": "Time spent",
+    "daily-metrics": "Daily Metrics",
+    "day-progress": "Day's Progress",
+    "failure-rate": "Failure Rate",
+    "history": "History",
+    "production-status": "Production Status",
+    "responsible-person": "Responsible Person",
+    "vibration": "Vibration",
+    "temperature": "Temperature",
+    "energy": "Energy",
+    "speed": "Speed",
+    "detail": "Detail"
+  },
+  "on": "On",
+  "off": "Off",
   "new": "New",
   "add": "Add"
 }
