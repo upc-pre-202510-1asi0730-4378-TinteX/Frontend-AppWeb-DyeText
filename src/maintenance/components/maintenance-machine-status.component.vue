@@ -1,42 +1,52 @@
 <script>
 import {TextileMachineService} from "../../monitoring/services/textilMachine.service.js";
-import {MachineInformationService} from "../service/machine-information.service.js";
+
 import {TextileMachine} from "../../monitoring/model/textileMachine.entity.js";
-import {MachineInformation} from "../model/machine-information.entity.js";
+
 import {AssignUser} from "../../assignUsers/model/assign-user.entity.js";
 import {AssignUserService} from "../../assignUsers/services/assign-user.service.js";
 
 export default {
   name: "maintenance-machine-status",
-  components: {},
   props: {
     machine: TextileMachine,
+    machinesInformation: {
+      type: Array,
+      default: () => []
+    }
+
   },
-  data(){
+  data() {
     return {
       textileMachines: [],
       users: [],
-      machinesInformation: [],
+
       textileMachineService: null,
-      machineInformationService: null,
-      userService: null,
+
+      assignUserService: null,
       showProductionStatus: false,
     }
   },
-  methods: {
-    machineInfo(){
+  computed: {
+    machineInfo() {
+      console.log('machine_information_id:', this.machine.machine_information_id);
+      console.log('machinesInformation:', this.machinesInformation);
+
+      if (!this.machine) return null;
       return this.machinesInformation.find(
-          (element) => element.id === this.machine.machine_information_id
+          (element) => String(element.id) === String(this.machine.machine_information_id)
       );
     },
-    getUserOfMachine(){
-      return this.users.find((elem) => (elem.id).toString() === this.machinesInformation.find(
-          (element) => element.id === this.machine.machine_information_id
-      ).user_id)
-    },
+    getUserOfMachine() {
+      if (!this.machineInfo) return null;
+      return this.users.find(
+          (elem) => String(elem.id) === String(this.machineInfo.user_id)
+      );
+    }
+  },
+  methods: {
     showProduction() {
       this.showProductionStatus = true;
-
       this.$nextTick(() => {
         const container = this.$refs.scrollContainer;
         if (container) {
@@ -50,16 +60,13 @@ export default {
   },
   created() {
     this.textileMachineService = new TextileMachineService();
-    this.machineInformationService = new MachineInformationService();
+
     this.assignUserService = new AssignUserService();
 
     this.textileMachineService.getAll().then((response) => {
       this.textileMachines = response.data.map(elem => new TextileMachine(elem));
     }).catch((error) => {console.log(error)});
 
-    this.machineInformationService.getAll().then((response) => {
-      this.machinesInformation = response.data.map(elem => new MachineInformation(elem));
-    }).catch((error) => {console.log(error)});
 
     this.assignUserService.getAll().then((response) => {
       this.users = response.data.map(elem => new AssignUser(elem));
@@ -80,29 +87,28 @@ export default {
       <div v-if="machineInfo" class="machine-info-container">
         <div class="machine-info">
           <img src="../../../public/speed.png" alt="temperature">
-          <span>{{ $t('maintenance.speed') }}: <br>  {{machineInfo().speed}} RPM</span>
+          <span>{{ $t('maintenance.speed') }}: <br>  {{machineInfo.speed}} RPM</span>
         </div>
         <div class="machine-info">
           <img src="../../../public/energia.png" alt="energy">
-          <span>{{ $t('maintenance.energy') }}: <br>  {{machineInfo().energy}} kWh</span>
+          <span>{{ $t('maintenance.energy') }}: <br>  {{machineInfo.energy}} kWh</span>
         </div>
         <div class="machine-info">
           <img src="../../../public/temperature.png" alt="temperature">
-          <span>{{ $t('maintenance.temperature') }}: <br>  {{machineInfo().temperature}} °C</span>
+          <span>{{ $t('maintenance.temperature') }}: <br>  {{machineInfo.temperature}} °C</span>
         </div>
         <div class="machine-info">
           <img src="../../../public/vibration.png" alt="temperature">
-          <span>{{ $t('maintenance.vibration') }}: <br>  {{machineInfo().vibration}} Hz</span>
+          <span>{{ $t('maintenance.vibration') }}: <br>  {{machineInfo.vibration}} Hz</span>
         </div>
       </div>
       <div v-else>
-        Loading machine information...
       </div>
       <h3>{{ $t('maintenance.responsible-person') }}</h3>
       <div class="person-manager-container">
         <ul class="person-manager">
-          <li v-if="getUserOfMachine" >
-            {{getUserOfMachine().name}}
+          <li v-if="getUserOfMachine">
+            {{getUserOfMachine.name}}
           </li>
         </ul>
       </div>
@@ -123,12 +129,12 @@ export default {
       <div>
         <h2>{{  $t('maintenance.current-status') }}</h2>
         <span>{{  $t('home.status') }}: {{ machine.status }}</span> <br>
-        <span>{{ $t('maintenance.time-spent') }}: {{ machineInfo().time_spent }}</span>
+        <span>{{ $t('maintenance.time-spent') }}: {{ machineInfo.time_spent }}</span>
       </div>
       <div>
         <h2>{{ $t('maintenance.daily-metrics') }}</h2>
-        <span>{{ $t('maintenance.day-progress') }}: {{ machineInfo().day_progress }}</span><br>
-        <span>{{ $t('maintenance.failure-rate') }}: {{ machineInfo().failure_rate }}</span>
+        <span>{{ $t('maintenance.day-progress') }}: {{ machineInfo.day_progress }}</span><br>
+        <span>{{ $t('maintenance.failure-rate') }}: {{ machineInfo.failure_rate }}</span>
       </div>
     </div>
   </div>

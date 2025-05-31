@@ -18,15 +18,12 @@ export default {
     }
   },
   methods: {
-    getMachineInformation(id){
-      let n
-      this.machinesInformation.filter(machine => machine.id === id)
-          .map(machine => {
-            n = machine.amount_failure;
-          });
-      return n
+    getMachineInformation(id) {
+      const machine = this.machinesInformation.find(m => m.id === id);
+      return machine ? machine.amount_failure : '-';
     },
     selectMachine(machine){
+      console.log('Machine selected:', machine);
       this.selectedMachine = machine;
     }
   },
@@ -66,7 +63,7 @@ export default {
           </div>
           <div class="failure-info-container">
             <span>{{ $t('maintenance.estimated-failure') }}</span>
-             {{getMachineInformation(textileMchn.machine_information_id)}}
+            {{getMachineInformation(textileMchn.machine_information_id)}}
             <span>{{ $t('maintenance.days') }}</span>
           </div>
         </li>
@@ -75,6 +72,7 @@ export default {
   </div>
   <maintenance-machine-status
       :machine="selectedMachine"
+      :machines-information="machinesInformation"
       v-if="selectedMachine"
       @close="selectedMachine = null"/>
 </template>
