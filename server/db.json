@@ -1,34 +1,78 @@
 {
-  "assignUser": [
+  "user-cards": [
     {
-      "id": 1,
+      "id": "a3f6d2d9-8c0e-4c9f-92f9-5df1a44b76e3",
+      "number_card": "4111 1111 1111 1111",
+      "expiration_date": "12/26",
+      "cvv": "123",
+      "user_name": "Alice Rivera",
+      "country": "Mexico"
+    },
+    {
+      "id": "28620189-a611-4e99-90b6-126db27ffde0",
+      "number_card": "7132 1234 4123 5554",
+      "expiration_date": "12/20",
+      "cvv": "454",
+      "user_name": "Jude",
+      "country": "Perú"
+    },
+    {
+      "id": "65b7dc77-f71e-42c0-8caf-4dab4b382936",
+      "number_card": "5235 3232 2222 1657",
+      "expiration_date": "10/09",
+      "cvv": "132",
+      "user_name": "Julio",
+      "country": "Perú"
+    }
+  ],
+  "users": [
+    {
+      "id": "ffb9dc8c-2e58-47f2-b437-7e6d6b00159c",
       "name": "Hector",
       "email": "hectorRios@gmail.com",
       "phone": "941234056",
       "start_date": "01/03/2025",
       "plant": "tercera planta",
       "role": "tecnico",
-      "permission": "monitoreo"
+      "permission": "monitoreo",
+      "card_id": "a3f6d2d9-8c0e-4c9f-92f9-5df1a44b76e3",
+      "subscription_active": true
     },
     {
-      "id": 2,
+      "id": "1b14725f-28e2-4cb7-b580-dc05f3e055ec",
       "name": "Jude",
       "email": "jude123@gmail.com",
       "phone": "953412423",
       "start_date": "01/05/2025",
       "plant": "segunda planta",
       "role": "tecnico",
-      "permission": "reportes"
+      "permission": "reportes",
+      "card_id": "28620189-a611-4e99-90b6-126db27ffde0",
+      "subscription_active": true
     },
     {
-      "id": 3,
+      "id": "bb650bb0-d346-4b35-8978-2f8a877e1804",
       "name": "Ricardo",
       "email": "Ricardito435@gmail.com",
       "phone": "904213590",
       "start_date": "30/02/2027",
       "plant": "cuarta planta",
       "role": "tecnico",
-      "permission": "monitoreo"
+      "permission": "monitoreo",
+      "card_id": "",
+      "subscription_active": false
+    },
+    {
+      "id": "18aab021-9b79-46ab-b468-641cbd427f82",
+      "name": "Julio",
+      "email": "skibidiJulio@gmail.com",
+      "phone": "",
+      "start_date": "2025-06-01T01:20:19.321Z",
+      "plant": "",
+      "role": "",
+      "permission": "",
+      "card_id": "65b7dc77-f71e-42c0-8caf-4dab4b382936",
+      "subscription_active": true
     }
   ],
   "machines_information": [
@@ -47,11 +91,11 @@
     {
       "id": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
       "time_spent": "00:45:00",
-      "day_progress": 30.0,
+      "day_progress": 30,
       "failure_rate": 0.5,
       "amount_failure": 0,
       "user_id": "1",
-      "temperature": 62.0,
+      "temperature": 62,
       "vibration": 0.1,
       "energy": 150.2,
       "speed": 800
@@ -72,22 +116,22 @@
       "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
       "time_spent": "01:50:00",
       "day_progress": 60.5,
-      "failure_rate": 1.0,
+      "failure_rate": 1,
       "amount_failure": 1,
       "user_id": "2",
       "temperature": 66.1,
       "vibration": 0.3,
-      "energy": 180.0,
+      "energy": 180,
       "speed": 950
     },
     {
       "id": "1c4a3bc2-1f65-4b34-bb98-d2c973c1a7e2",
       "time_spent": "02:00:00",
-      "day_progress": 70.0,
-      "failure_rate": 2.0,
+      "day_progress": 70,
+      "failure_rate": 2,
       "amount_failure": 2,
       "user_id": "2",
-      "temperature": 70.0,
+      "temperature": 70,
       "vibration": 0.5,
       "energy": 240.5,
       "speed": 1100
@@ -95,7 +139,7 @@
     {
       "id": "9b2c13f2-bf28-4c5d-8c76-70d663a42345",
       "time_spent": "05:00:00",
-      "day_progress": 95.0,
+      "day_progress": 95,
       "failure_rate": 4.5,
       "amount_failure": 5,
       "user_id": "3",
@@ -202,73 +246,52 @@
   "notifications": [
     {
       "id": 1,
-      "message": "Vibración fuera de rango detectada",
-      "dateTime": "2025-05-16T10:45:00",
+      "message": "Maquina con exceso de temperatura",
+      "dateTime": "15/05/2025",
       "textilMachine": "MáquinaTextil_001",
-      "markAsRead": false
-    },
-    {
-      "id": 2,
-      "message": "Presión hidráulica baja",
-      "dateTime": "2025-05-16T11:02:00",
-      "textilMachine": "MáquinaTextil_003",
       "markAsRead": true
     },
     {
+      "id": 2,
+      "message": "Vibración fuera de rango detectada",
+      "dateTime": "2025-05-16T10:45:00",
+      "textilMachine": "1",
+      "markAsRead": false
+    },
+    {
       "id": 3,
-      "message": "Temperatura anormal detectada",
-      "dateTime": "2023-12-31T23:59:59",
-      "textilMachine": "MáquinaTextil_002",
+      "message": "Presión hidráulica baja",
+      "dateTime": "2025-05-16T11:02:00",
+      "textilMachine": "3",
       "markAsRead": true
     },
     {
       "id": 4,
-      "message": "Desfase eléctrico registrado",
-      "dateTime": "2025-05-16T12:15:00",
-      "textilMachine": "MáquinaTextil_004",
+      "message": "Temperatura anormal detectada",
+      "dateTime": "2025-05-16T11:30:00",
+      "textilMachine": "2",
       "markAsRead": false
     },
     {
       "id": 5,
-      "message": "Tiempo de operación excedido",
-      "dateTime": "2025-05-16T12:45:00",
-      "textilMachine": "MáquinaTextil_001",
-      "markAsRead": true
-    },
-    {
-      "id": 6,
-      "message": "Sensor de humedad desconectado",
-      "dateTime": "2025-05-16T13:05:00",
-      "textilMachine": "MáquinaTextil_003",
+      "message": "Desfase eléctrico registrado",
+      "dateTime": "2025-05-16T12:15:00",
+      "textilMachine": "4",
       "markAsRead": false
     },
     {
+      "id": 6,
+      "message": "Tiempo de operación excedido",
+      "dateTime": "2025-05-16T12:45:00",
+      "textilMachine": "1",
+      "markAsRead": true
+    },
+    {
       "id": 7,
-      "message": "Error general del sistema",
-      "dateTime": "2025-05-16T14:00:00",
-      "textilMachine": "MáquinaTextil_005",
-      "markAsRead": true
-    },
-    {
-      "id": 8,
-      "message": "Chequeo de rutina completado",
-      "dateTime": "2025-05-16T15:00:00",
-      "textilMachine": "MáquinaTextil_006",
-      "markAsRead": true
-    },
-    {
-      "id": 9,
-      "message": "Fallo en sensor de temperatura",
-      "dateTime": "2025-05-16T16:00:00",
-      "textilMachine": "MáquinaTextil_002",
-      "markAsRead": true
-    },
-    {
-      "id": 10,
-      "message": "Desconexión de red detectada",
-      "dateTime": "2025-05-16T17:00:00",
-      "textilMachine": "MáquinaTextil_005",
-      "markAsRead": true
+      "message": "Sensor de humedad desconectado",
+      "dateTime": "2025-05-16T13:05:00",
+      "textilMachine": "3",
+      "markAsRead": false
     }
   ]
 }
