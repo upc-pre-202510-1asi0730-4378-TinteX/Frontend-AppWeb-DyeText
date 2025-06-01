@@ -48,6 +48,9 @@ export default {
         this.machines = response.data.map((machine) => new TextileMachine(machine));
       });
     },
+    getTasksForMachine(machineId) {
+      return this.tasks.filter(task => task.machineId === machineId);
+    }
   },
   created() {
     this.fetchMachines(); // Fetch machines when the component is created
@@ -97,7 +100,7 @@ export default {
       <ul>
         <!-- Display tasks for each machine -->
         <li
-            v-for="task in tasks.filter((task) => task.machineId === machine.id)"
+            v-for="task in getTasksForMachine(machine.id)"
             :key="task.id"
             class="task-item"
         >
