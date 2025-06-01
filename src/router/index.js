@@ -17,6 +17,7 @@ const Monitoring = () => import('../monitoring/pages/textilMachine-management.co
 const PageNotFoundComponent = () => import('../public/pages/page-not-found.component.vue');
 const AssignUsersManagementComponent = () => import('../assignUsers/pages/assign-user.management.component.vue');
 const ConfigurationPage = () => import('../machine-configuration/pages/ConfigurationPage.vue');
+
 /**
  * @type {import('vue-router').RouteRecordRaw[]}
  * @description Application route definitions.

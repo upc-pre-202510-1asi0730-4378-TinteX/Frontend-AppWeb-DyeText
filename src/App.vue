@@ -1,4 +1,3 @@
-
 <script>
  import LanguageSwitcher from "./public/components/language-switcher.component.vue";
  import {defineComponent} from "vue";

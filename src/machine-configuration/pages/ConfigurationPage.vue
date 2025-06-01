@@ -15,10 +15,10 @@
 
 <script>
 import ConnectionForm from '../components/ConnectionForm.vue';
-import { testConnection, getMachineInformation } from '../services/connection.service';
+import {testConnection, getMachineInformation} from '../services/connection.service';
 
 export default {
-  components: { ConnectionForm },
+  components: {ConnectionForm},
   props: {
     machine: {
       type: Object,

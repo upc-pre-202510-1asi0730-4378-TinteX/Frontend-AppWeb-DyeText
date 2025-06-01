@@ -29,55 +29,6 @@
       "plant": "cuarta planta",
       "role": "tecnico",
       "permission": "monitoreo"
-    },
-    {
-      "protocol": "HTTP",
-      "ipAddress": "123456",
-      "networkId": "",
-      "updateFrequency": 2,
-      "id": 4
-    },
-    {
-      "name": "",
-      "protocol": "HTTP",
-      "updateFrequency": 1,
-      "id": 5
-    },
-    {
-      "name": "",
-      "protocol": "HTTP",
-      "updateFrequency": 3,
-      "id": 6
-    },
-    {
-      "name": "",
-      "protocol": "HTTP",
-      "updateFrequency": 3,
-      "id": 7
-    },
-    {
-      "name": "",
-      "protocol": "HTTP",
-      "updateFrequency": 1,
-      "id": 8
-    },
-    {
-      "name": "",
-      "protocol": "HTTP",
-      "updateFrequency": 1,
-      "id": 9
-    },
-    {
-      "name": "",
-      "protocol": "HTTP",
-      "updateFrequency": 1,
-      "id": 10
-    },
-    {
-      "name": "",
-      "protocol": "HTTP",
-      "updateFrequency": 0,
-      "id": 11
     }
   ],
   "machine_information": [

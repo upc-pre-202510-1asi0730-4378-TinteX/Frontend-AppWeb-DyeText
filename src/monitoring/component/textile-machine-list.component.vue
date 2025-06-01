@@ -8,6 +8,7 @@ export default {
   components: {PvCard},
   data(){
     return {
+      showForm: false,
       textileMachines: [],
       textileMachineService: null,
     }
@@ -25,13 +26,14 @@ export default {
 
     this.textileMachineService.getAll().then((response) => {
       this.textileMachines = response.data.map(elem => new TextileMachine(elem));
+      console.log(this.textileMachines);
     }).catch((error) => {console.log(error)});
   }
 }
 </script>
 
 <template>
-  <div class="card">
+  <div  class="card">
     <div class="flex" v-for="textileMachine in textileMachines" :key="textileMachine.id">
       <div id="header">
         <h3>{{textileMachine.name}} - {{textileMachine.number_machine}}</h3>
@@ -55,6 +57,7 @@ export default {
     </div>
   </div>
 </template>
+
 <style scoped>
 
 .card{
