@@ -13,6 +13,14 @@ export default {
       textileMachineService: null,
     }
   },
+  methods: {
+    goToConfiguration(machine) {
+      this.$router.push({
+        name: 'machine-configuration',
+        params: { machine: machine },
+      });
+    },
+  },
   created(){
     this.textileMachineService = new TextileMachineService();
 
@@ -45,7 +53,7 @@ export default {
         </span>
       </div>
       <br>
-      <i class="pi pi-cog" style="font-size: 20px;cursor: pointer"></i>
+      <i class="pi pi-cog" style="font-size: 20px;cursor: pointer" @click="goToConfiguration(textileMachine)"></i>
     </div>
   </div>
 </template>

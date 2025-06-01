@@ -36,6 +36,16 @@
     "last-activity": "Última actividad",
     "featured-machines": "Máquinas destacadas"
   },
+  "machine-configuration": {
+    "title": "Configuración de Máquina",
+    "protocol": "Protocolo de Conexión",
+    "updateFrequency": "Frecuencia de Actualización (s)",
+    "testConnection": "Probar Conexión",
+    "connectionSuccess": "¡Conexión exitosa!",
+    "connectionFailure": "Fallo en la conexión",
+    "connectionDetails": "Detalles de la conexión",
+    "continue": "Continuar"
+  },
   "alertSystem": {
     "notification": "Notificación",
     "notifications": "Notificaciones",
