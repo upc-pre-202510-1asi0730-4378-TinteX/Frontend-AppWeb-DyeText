@@ -2,7 +2,7 @@ import {createRouter, createWebHistory} from "vue-router";
 
 
 /**
- * @description Lazy-loaded component imports for route configuration
+ * @description Lazy-loaded components imports for route configuration
  * Using dynamic imports to enable code splitting and improve initial load performance
  */
 
@@ -13,6 +13,7 @@ const PageNotFoundComponent = () => import('../public/pages/page-not-found.compo
 const AssignUsersManagementComponent = () => import('../assignUsers/pages/assign-user.management.component.vue');
 const MaintenanceManagementComponent = () => import('../maintenance/pages/maintenance-management.component.vue');
 const SubscriptionManagementComponent = () => import('../subscriptions-and-payments/pages/subscriptions-and-payments-management.component.vue');
+const DataAnalyticsManagementComponent = () => import('../analytics/pages/data-analytics-management.vue');
 
 
 /**
@@ -21,7 +22,7 @@ const SubscriptionManagementComponent = () => import('../subscriptions-and-payme
  * Each route object contains:
  * - path: URL path for the route
  * - name: Unique identifier for the route
- * - component: Vue component to render
+ * - components: Vue components to render
  * - meta: Additional metadata including page title
  */
 
@@ -30,6 +31,7 @@ const routes = [
     {   path: '/home',                  name: 'home',               component: HomeComponent,               meta: {title: 'Home'}},
     {   path: '/publishing/notifications', name: 'notifications', component: NotificationManagementComponent, meta: { title: 'Notifications' } },
     {   path: '/monitoring',                  name: 'Monitoring',               component: Monitoring,               meta: {title: 'Monitoring'}},
+    { path: '/data-analytics', name: 'DataAnalytics', component: DataAnalyticsManagementComponent, meta: { title: 'Data Analytics' } },
     {   path: '/maintenance',                  name: 'Maintenance',               component: MaintenanceManagementComponent,               meta: {title: 'Maintenance'}},
     {   path: '/subscription',  name: 'Subscription',  component: SubscriptionManagementComponent,               meta: {title: 'Subscription'}},
     {   path: '/assignUser',            name: 'assignUser',         component: AssignUsersManagementComponent, meta: {title: 'AssignUser'}},

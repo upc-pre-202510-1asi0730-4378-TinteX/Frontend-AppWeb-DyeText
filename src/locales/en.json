@@ -64,6 +64,17 @@
     "speed": "Speed",
     "detail": "Detail"
   },
+  "analytics": {
+    "graphA": "Chart A: Failure Rate per Machine",
+    "graphB": "Chart B: Number of Failures per Machine",
+    "graphC": "Chart C: Number of Tasks by Status",
+    "graphD": "Chart D: Notifications Over Time",
+    "legendTitle": "Legend",
+    "legendA": "Percentage of failures detected by each machine.",
+    "legendB": "Total number of failures recorded per machine.",
+    "legendC": "Distribution of tasks by their current status.",
+    "legendD": "Number of notifications generated over time."
+  },
   "on": "On",
   "off": "Off",
   "new": "New",

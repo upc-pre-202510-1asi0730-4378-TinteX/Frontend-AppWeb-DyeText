@@ -5,8 +5,8 @@
 import {FilterMatchMode} from '@primevue/core/api';
 
 /**
- * @component data-manager
- * @description A reusable data management component that provides a standardized interface
+ * @components data-manager
+ * @description A reusable data management components that provides a standardized interface
  * for displaying, filtering, and performing CRUD operations on data collections.
  * Features include data display in tabular format, item selection, filtering, and
  * actions like create, edit, delete, and export.
