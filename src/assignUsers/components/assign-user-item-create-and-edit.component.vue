@@ -60,6 +60,8 @@ export default {
      */
     onSaveRequested() {
       this.submitted = true;
+      this.item.card_id = "";
+      this.item.subscription_active=false
       this.$emit('save-requested', this.item);
     }
   }
