@@ -10,7 +10,18 @@ export class AssignUser {
      * @param {string} [params.email=''] - Unique identifier for the category
      * @param {string} [params.name=''] - Display name of the category
      */
-    constructor({id = '', name = '', email = '', phone= '', start_date = '', plant= '', role= '', permission = ''}) {
+    constructor({
+                    id = '',
+                    name = '',
+                    email = '',
+                    phone= '',
+                    start_date = '',
+                    plant= '',
+                    role= '',
+                    permission = '',
+                    card_id='',
+                    subscription_active=false
+    }) {
 
         /**
          * @type {string}
@@ -24,5 +35,7 @@ export class AssignUser {
         this.plant = plant;
         this.role = role;
         this.permission = permission;
+        this.card_id = card_id;
+        this.subscription_active = subscription_active;
     }
 }
