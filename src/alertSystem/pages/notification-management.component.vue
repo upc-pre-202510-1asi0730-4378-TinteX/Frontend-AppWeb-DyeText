@@ -12,7 +12,10 @@ export default {
   },
   data() {
     return {
-      title: { singular: "Notification", plural: "Notifications" },
+      title: {
+        singular: this.$t('alertSystem.notification'),
+        plural: this.$t('alertSystem.notifications')
+      },
       notifications: [],
       notification: new Notification(),
       selectedNotifications: [],
@@ -58,21 +61,21 @@ export default {
     },
     onSaveRequested(item) {
       this.submitted = true;
-      // validaciones básicas
+
       if (!item.message.trim() || !item.dateTime) {
         return;
       }
 
-      // siempre crear
+
       this.notificationService.create(item)
           .then(response => {
-            // response.data tendrá el nuevo objeto con su id asignado por el backend
+
             this.notifications.push(new Notification(response.data));
             this.notifySuccessfulAction("Notification Created");
           })
           .catch(console.error);
 
-      // cerrar diálogo
+
       this.createAndEditDialogIsVisible = false;
     },
     onDeleteSelected(items) {
@@ -80,10 +83,10 @@ export default {
 
       const idsToDelete = items.map(i => i.id);
 
-      // Eliminar del backend
+
       Promise.all(idsToDelete.map(id => this.notificationService.delete(id)))
           .then(() => {
-            // Eliminar del estado local
+
             this.notifications = this.notifications.filter(n => !idsToDelete.includes(n.id));
             this.selectedNotifications = [];
 
@@ -100,13 +103,13 @@ export default {
           });
     },
     onDeleteItem(item) {
-      // Llamas al servicio de notificaciones
+
       this.notificationService
           .delete(item.id)
           .then(() => {
-            // Actualizas tu lista local quitando la notificación borrada
+
             this.notifications = this.notifications.filter(n => n.id !== item.id);
-            // Muestras un toast de confirmación
+
             this.notifySuccessfulAction("Notification Deleted");
           })
           .catch(err => {
@@ -146,10 +149,28 @@ export default {
     >
       <template #custom-columns>
         <pv-column field="id" header="ID" sortable style="min-width:12rem" />
-        <pv-column field="message" header="Message" sortable style="min-width:24rem" />
-        <pv-column field="dateTime" header="Date & Time" sortable style="min-width:20rem" />
-        <pv-column field="textilMachine" header="Textil Machine" style="min-width:20rem" />
-        <pv-column field="markAsRead" header="Read" style="min-width:8rem" />
+        <pv-column
+            field="message"
+            :header="$t('alertSystem.message')"
+            sortable
+            style="min-width:24rem"
+        />
+        <pv-column
+            field="dateTime"
+            :header="$t('alertSystem.dateTime')"
+            sortable
+            style="min-width:20rem"
+        />
+        <pv-column
+            field="textilMachine"
+            :header="$t('alertSystem.textilMachine')"
+            style="min-width:20rem"
+        />
+        <pv-column
+            field="markAsRead"
+            :header="$t('alertSystem.markAsRead')"
+            style="min-width:8rem"
+        />
       </template>
     </data-manager>
 

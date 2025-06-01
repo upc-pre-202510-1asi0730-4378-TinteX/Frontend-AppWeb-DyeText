@@ -6,7 +6,7 @@
  */
 export class AssignUserService {
     /** @type {string} The API endpoint for categories */
-    resourceEndpoint = import.meta.env.VITE_ASSIGNUSER_ENDPOINT_PATH;
+    resourceEndpoint = import.meta.env.VITE_ASSIGN_USER_ENDPOINT_PATH;
 
     /**
      * Retrieves all categories

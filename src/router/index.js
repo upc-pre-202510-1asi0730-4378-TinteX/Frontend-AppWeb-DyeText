@@ -1,8 +1,3 @@
-/**
- * @fileoverview Router configuration for the ACME Learning Center application
- * Defines all routes and navigation behavior for the application
- */
-
 import {createRouter, createWebHistory} from "vue-router";
 
 
@@ -16,7 +11,11 @@ const NotificationManagementComponent = () => import('../alertSystem/pages/notif
 const Monitoring = () => import('../monitoring/pages/textilMachine-management.component.vue');
 const PageNotFoundComponent = () => import('../public/pages/page-not-found.component.vue');
 const AssignUsersManagementComponent = () => import('../assignUsers/pages/assign-user.management.component.vue');
+const MaintenanceManagementComponent = () => import('../maintenance/pages/maintenance-management.component.vue');
+const SubscriptionManagementComponent = () => import('../subscriptions-and-payments/pages/subscriptions-and-payments-management.component.vue');
 const ConfigurationPage = () => import('../machine-configuration/pages/ConfigurationPage.vue');
+
+
 
 /**
  * @type {import('vue-router').RouteRecordRaw[]}
@@ -27,20 +26,21 @@ const ConfigurationPage = () => import('../machine-configuration/pages/Configura
  * - component: Vue component to render
  * - meta: Additional metadata including page title
  */
+
+
 const routes = [
     {   path: '/home',                  name: 'home',               component: HomeComponent,               meta: {title: 'Home'}},
     {   path: '/publishing/notifications', name: 'notifications', component: NotificationManagementComponent, meta: { title: 'Notifications' } },
     {   path: '/monitoring',                  name: 'Monitoring',               component: Monitoring,               meta: {title: 'Monitoring'}},
+    {   path: '/maintenance',                  name: 'Maintenance',               component: MaintenanceManagementComponent,               meta: {title: 'Maintenance'}},
+    {   path: '/subscription',  name: 'Subscription',  component: SubscriptionManagementComponent,               meta: {title: 'Subscription'}},
     {   path: '/assignUser',            name: 'assignUser',         component: AssignUsersManagementComponent, meta: {title: 'AssignUser'}},
     {   path: '/monitoring/machine-configuration', name: 'machine-configuration', component: ConfigurationPage, props: route => ({ machine: route.params.machine || {} }),},
     {   path: '/',                      name: 'default',            redirect: {name: 'home'}},
     {   path: '/:pathMatch(.*)*',       name: 'not-found',          component: PageNotFoundComponent,       meta: {title: 'Page not found'}},
 ]
 
-/**
- * @type {import('vue-router').Router}
- * @description Vue Router instance configured with HTML5 history mode
- */
+
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: routes,
