@@ -11,14 +11,10 @@
       <p v-else>No hay tareas para esta máquina.</p>
       <button @click="openModal(machine.id)" class="btn-add-task">Añadir Tarea</button>
     </div>
-    <button @click="finishAllTasks(machine.id)" class="btn-finish-tasks">Finish and Save</button>
-    <br>
-    <br>
-    <button @click="goHome">Regresar al Home</button>
-
     <AddTaskModal
         v-if="showModal"
         :machineId="selectedMachineId"
+        :machines="machines"
         @close="closeModal"
         @task-added="fetchData"
     />
@@ -26,9 +22,9 @@
 </template>
 
 <script>
-import { getTasks, updateTask } from '/src/task/services/task.service.js';
+import { getTasks } from '/src/task/services/task.service.js';
 import { getMachines } from '/src/task/services/machine.service.js';
-import AddTaskModal from '/src/task/component/AddTaskModel.vue';
+import AddTaskModal from '/src/task/component/AddTaskModel.component.vue';
 
 export default {
   components: { AddTaskModal },
@@ -46,24 +42,14 @@ export default {
       this.tasks = await getTasks();
     },
     getTasksByMachine(machineId) {
-      return this.tasks.filter((task) => task.machine_id === machineId);
+      return this.tasks.filter((task) => task.machineId === machineId);
     },
     openModal(machineId) {
       this.selectedMachineId = machineId;
       this.showModal = true;
     },
-    goHome() {
-      this.$router.push('/');
-    },
     closeModal() {
       this.showModal = false;
-    },
-    async finishAllTasks(machineId) {
-      const tasksToFinish = this.getTasksByMachine(machineId);
-      for (const task of tasksToFinish) {
-        await updateTask(task.id, {status: 'completed'});
-      }
-      this.fetchData();
     },
   },
   mounted() {
