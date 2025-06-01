@@ -13,7 +13,7 @@ const PageNotFoundComponent = () => import('../public/pages/page-not-found.compo
 const AssignUsersManagementComponent = () => import('../assignUsers/pages/assign-user.management.component.vue');
 const MaintenanceManagementComponent = () => import('../maintenance/pages/maintenance-management.component.vue');
 const SubscriptionManagementComponent = () => import('../subscriptions-and-payments/pages/subscriptions-and-payments-management.component.vue');
-
+const DataAnalyticsManagementComponent = () => import('../analytics/pages/data-analytics-management.vue');
 
 /**
  * @type {import('vue-router').RouteRecordRaw[]}
@@ -31,6 +31,7 @@ const routes = [
     {   path: '/publishing/notifications', name: 'notifications', component: NotificationManagementComponent, meta: { title: 'Notifications' } },
     {   path: '/monitoring',                  name: 'Monitoring',               component: Monitoring,               meta: {title: 'Monitoring'}},
     {   path: '/maintenance',                  name: 'Maintenance',               component: MaintenanceManagementComponent,               meta: {title: 'Maintenance'}},
+    {   path: '/data-analytics', name: 'Analytics', component: DataAnalyticsManagementComponent, meta: { title: 'Data Analytics' } },
     {   path: '/subscription',  name: 'Subscription',  component: SubscriptionManagementComponent,               meta: {title: 'Subscription'}},
     {   path: '/assignUser',            name: 'assignUser',         component: AssignUsersManagementComponent, meta: {title: 'AssignUser'}},
     {   path: '/',                      name: 'default',            redirect: {name: 'home'}},
