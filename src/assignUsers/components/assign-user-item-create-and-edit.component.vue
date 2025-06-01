@@ -1,13 +1,13 @@
 ﻿<script>
 /**
- * Import the base create-and-edit component to extend its functionality
+ * Import the base create-and-edit components to extend its functionality
  */
 import CreateAndEdit from "../../shared/components/create-and-edit.component.vue";
 
 /**
- * @component
- * @description A specialized dialog component for creating and editing Category entities.
- * This component wraps the generic create-and-edit component and adds category-specific
+ * @components
+ * @description A specialized dialog components for creating and editing Category entities.
+ * This components wraps the generic create-and-edit components and adds category-specific
  * UI elements and validation.
  */
 export default {
@@ -47,15 +47,15 @@ export default {
   },
   methods: {
     /**
-     * Handles the cancel request from the create-and-edit component
-     * Emits the cancel-requested event to the parent component
+     * Handles the cancel request from the create-and-edit components
+     * Emits the cancel-requested event to the parent components
      */
     onCancelRequested() {
       this.$emit('cancel-requested');
     },
 
     /**
-     * Handles the save request from the create-and-edit component
+     * Handles the save request from the create-and-edit components
      * Sets submitted flag for validation and emits the save-requested event with the category item
      */
     onSaveRequested() {

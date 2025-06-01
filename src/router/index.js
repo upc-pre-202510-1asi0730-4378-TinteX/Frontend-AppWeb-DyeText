@@ -13,8 +13,6 @@ const PageNotFoundComponent = () => import('../public/pages/page-not-found.compo
 const AssignUsersManagementComponent = () => import('../assignUsers/pages/assign-user.management.component.vue');
 const MaintenanceManagementComponent = () => import('../maintenance/pages/maintenance-management.component.vue');
 const SubscriptionManagementComponent = () => import('../subscriptions-and-payments/pages/subscriptions-and-payments-management.component.vue');
-const ConfigurationPage = () => import('../machine-configuration/pages/ConfigurationPage.vue');
-
 
 
 /**
@@ -35,7 +33,6 @@ const routes = [
     {   path: '/maintenance',                  name: 'Maintenance',               component: MaintenanceManagementComponent,               meta: {title: 'Maintenance'}},
     {   path: '/subscription',  name: 'Subscription',  component: SubscriptionManagementComponent,               meta: {title: 'Subscription'}},
     {   path: '/assignUser',            name: 'assignUser',         component: AssignUsersManagementComponent, meta: {title: 'AssignUser'}},
-    {   path: '/monitoring/machine-configuration', name: 'machine-configuration', component: ConfigurationPage, props: route => ({ machine: route.params.machine || {} }),},
     {   path: '/',                      name: 'default',            redirect: {name: 'home'}},
     {   path: '/:pathMatch(.*)*',       name: 'not-found',          component: PageNotFoundComponent,       meta: {title: 'Page not found'}},
 ]

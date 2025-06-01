@@ -74,6 +74,18 @@
     "speed": "Speed",
     "detail": "Detail"
   },
+  "analytics": {
+    "graphA": "Gráfico A: Tasa de Fallos por Máquina",
+    "graphB": "Gráfico B: Cantidad de Fallas por Máquina",
+    "graphC": "Gráfico C: Cantidad de Tareas por Estado",
+    "graphD": "Gráfico D: Notificaciones a lo Largo del Tiempo",
+    "legendTitle": "Leyenda",
+    "legendA": "Porcentaje de fallos detectados por cada máquina.",
+    "legendB": "Número total de fallas registradas por máquina.",
+    "legendC": "Distribución de tareas según su estado actual.",
+    "legendD": "Cantidad de notificaciones generadas a lo largo del tiempo."
+  },
+
   "on": "On",
   "off": "Off",
   "new": "Nuevo",

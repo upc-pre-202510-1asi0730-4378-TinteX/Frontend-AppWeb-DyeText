@@ -6,8 +6,8 @@
 const defaultStyle = { width: '400px' };
 
 /**
- * @component
- * @description A reusable dialog component for creating and editing entities.
+ * @components
+ * @description A reusable dialog components for creating and editing entities.
  * Provides a standardized interface for entity creation and editing operations.
  */
 export default {
