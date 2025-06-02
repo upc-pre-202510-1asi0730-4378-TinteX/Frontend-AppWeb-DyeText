@@ -293,5 +293,16 @@
       "textilMachine": "3",
       "markAsRead": false
     }
+  ],
+  "profiles": [
+    {
+      "id": "1",
+      "full_name": "Hector Rios",
+      "email": "hectorRios@gmail.com",
+      "phone": "941234056",
+      "membership_active": true,
+      "timezone": "America/Lima",
+      "theme": "light"
+    }
   ]
 }

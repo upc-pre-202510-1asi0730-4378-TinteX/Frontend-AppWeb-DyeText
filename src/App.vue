@@ -47,7 +47,9 @@
       <template #end>
         <div class="toolbar-end">
           <i class="pi pi-bell" style="font-size: 2rem"></i>
-          <i class="pi pi-user" style="font-size: 2rem"></i>
+          <router-link to="/profile">
+            <i class="pi pi-user" style="font-size: 2rem; cursor: pointer"></i>
+          </router-link>
         </div>
         <language-switcher/>
       </template>

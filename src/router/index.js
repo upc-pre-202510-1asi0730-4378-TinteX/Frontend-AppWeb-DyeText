@@ -15,6 +15,7 @@ const MaintenanceManagementComponent = () => import('../maintenance/pages/mainte
 const SubscriptionManagementComponent = () => import('../subscriptions-and-payments/pages/subscriptions-and-payments-management.component.vue');
 const DataAnalyticsManagementComponent = () => import('../analytics/pages/data-analytics-management.vue');
 const ConfigurationPage = () => import('../machine-configuration/pages/ConfigurationPage.vue');
+const ProfileManagementComponent = () => import('../profiles/pages/profile-management.vue');
 /**
  * @type {import('vue-router').RouteRecordRaw[]}
  * @description Application route definitions.
@@ -37,6 +38,8 @@ const routes = [
     {   path: '/assignUser',            name: 'assignUser',         component: AssignUsersManagementComponent, meta: {title: 'AssignUser'}},
     {   path: '/',                      name: 'default',            redirect: {name: 'home'}},
     {   path: '/:pathMatch(.*)*',       name: 'not-found',          component: PageNotFoundComponent,       meta: {title: 'Page not found'}},
+    { path: '/profile', name: 'profile', component: ProfileManagementComponent, meta: { title: 'Perfil' } }
+
 ]
 
 
