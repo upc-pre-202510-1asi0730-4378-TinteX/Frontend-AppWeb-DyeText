@@ -14,7 +14,7 @@ const AssignUsersManagementComponent = () => import('../assignUsers/pages/assign
 const MaintenanceManagementComponent = () => import('../maintenance/pages/maintenance-management.component.vue');
 const SubscriptionManagementComponent = () => import('../subscriptions-and-payments/pages/subscriptions-and-payments-management.component.vue');
 const DataAnalyticsManagementComponent = () => import('../analytics/pages/data-analytics-management.vue');
-
+const ConfigurationPage = () => import('../machine-configuration/pages/ConfigurationPage.vue');
 /**
  * @type {import('vue-router').RouteRecordRaw[]}
  * @description Application route definitions.
@@ -31,6 +31,7 @@ const routes = [
     {   path: '/publishing/notifications', name: 'notifications', component: NotificationManagementComponent, meta: { title: 'Notifications' } },
     {   path: '/monitoring',                  name: 'Monitoring',               component: Monitoring,               meta: {title: 'Monitoring'}},
     {   path: '/maintenance',                  name: 'Maintenance',               component: MaintenanceManagementComponent,               meta: {title: 'Maintenance'}},
+    {   path: '/monitoring/machine-configuration', name: 'machine-configuration', component: ConfigurationPage, props: route => ({ machine: route.params.machine || {} }),},
     {   path: '/data-analytics', name: 'Analytics', component: DataAnalyticsManagementComponent, meta: { title: 'Data Analytics' } },
     {   path: '/subscription',  name: 'Subscription',  component: SubscriptionManagementComponent,               meta: {title: 'Subscription'}},
     {   path: '/assignUser',            name: 'assignUser',         component: AssignUsersManagementComponent, meta: {title: 'AssignUser'}},
