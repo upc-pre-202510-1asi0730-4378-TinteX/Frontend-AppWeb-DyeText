@@ -66,13 +66,25 @@
       "id": "18aab021-9b79-46ab-b468-641cbd427f82",
       "name": "Julio",
       "email": "skibidiJulio@gmail.com",
-      "phone": "",
-      "start_date": "2025-06-01T01:20:19.321Z",
-      "plant": "",
-      "role": "",
-      "permission": "",
-      "card_id": "65b7dc77-f71e-42c0-8caf-4dab4b382936",
-      "subscription_active": true
+      "phone": "958230123",
+      "start_date": "15/05/2025",
+      "plant": "primera planta",
+      "role": "tecnico",
+      "permission": "monitoreo",
+      "card_id": "",
+      "subscription_active": false
+    },
+    {
+      "id": "3c16264c-4d94-472e-b29d-fb2bbe3bc210",
+      "name": "Jhonny",
+      "email": "jhonny1209@gmail.com",
+      "phone": "960234064",
+      "start_date": "01/02/2025",
+      "plant": "cuarta planta",
+      "role": "tecnico",
+      "permission": "reportes",
+      "card_id": "",
+      "subscription_active": false
     }
   ],
   "machines_information": [

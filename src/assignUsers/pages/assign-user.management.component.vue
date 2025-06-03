@@ -2,6 +2,7 @@
 import { AssignUser } from "../model/assign-user.entity.js";
 import { AssignUserService } from "../services/assign-user.service.js";
 import DataManager from "../../shared/components/data-manager.component.vue";
+import { v4 as uuidv4 } from 'uuid';
 import AssignUserItemCreateAndEditDialog from "../components/assign-user-item-create-and-edit.component.vue";
 
 export default {
@@ -66,6 +67,9 @@ export default {
         if (item.id) {
           this.updateAssignUser();
         } else {
+          if (!this.assignUser.id) {
+            this.assignUser.id = uuidv4();
+          }
           this.createAssignUser();
         }
         this.createAndEditDialogIsVisible = false;
@@ -120,25 +124,24 @@ export default {
 </script>
 
 <template>
-  <div class="w-full">
-    <data-manager :title="title"
-                  :items="assignUsers"
-                  @new-item-requested="onNewItem"
-                  @edit-item-requested="onEditItem($event)"
-                  @delete-item-requested="onDeleteItem($event)"
-                  @delete-selected-items-requested="onDeleteSelectedItems($event)">
-      <template #custom-columns>
-        <pv-column :sortable="true" field="id" header="ID" style="min-width: 12rem" />
-        <pv-column :sortable="true" field="name" header="Name" style="min-width: 12rem" />
-        <pv-column :sortable="true" field="email" header="Email" style="min-width: 24rem" />
-        <pv-column :sortable="true" field="phone" header="Phone" style="min-width: 24rem" />
-        <pv-column :sortable="true" field="start_date" header="Start_date" style="min-width: 24rem" />
-        <pv-column :sortable="true" field="plant" header="Plant" style="min-width: 24rem" />
-        <pv-column :sortable="true" field="role" header="Role" style="min-width: 24rem" />
-        <pv-column :sortable="true" field="permission" header="Permission" style="min-width: 24rem" />
-      </template>
-    </data-manager>
-
+  <div class="assign-user-container">
+    <h2 class="page-title">{{ $t('assignUser.title') }}</h2>
+    <button class="add-btn" @click="onNewItem">{{ $t('assignUser.add') }}</button>
+    <div class="cards-grid">
+      <div v-for="user in assignUsers" :key="user.id" class="card">
+        <h3>{{ user.name }}</h3>
+        <p><strong>{{ $t('assignUser.email') }}:</strong> {{ user.email }}</p>
+        <p><strong>{{ $t('assignUser.phone') }}:</strong> {{ user.phone }}</p>
+        <p><strong>{{ $t('assignUser.startDate') }}:</strong> {{ user.start_date }}</p>
+        <p><strong>{{ $t('assignUser.plant') }}:</strong> {{ user.plant }}</p>
+        <p><strong>{{ $t('assignUser.role') }}:</strong> {{ user.role }}</p>
+        <p><strong>{{ $t('assignUser.permission') }}:</strong> {{ user.permission }}</p>
+        <div class="actions">
+          <button @click="onEditItem(user)">{{ $t('assignUser.edit') }}</button>
+          <button @click="onDeleteItem(user)">{{ $t('assignUser.delete') }}</button>
+        </div>
+      </div>
+    </div>
     <assign-user-item-create-and-edit-dialog
         :edit="isEdit"
         :item="assignUser"
@@ -149,4 +152,73 @@ export default {
 </template>
 
 <style scoped>
+.assign-user-container {
+  margin-top: 1rem;
+  width: 100%;
+}
+.page-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+.add-btn {
+  margin-bottom: 1.5rem;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  background: #1976d2;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.add-btn:hover {
+  background: #1565c0;
+}
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #222;
+}
+.card h3, .card p, .card strong {
+  color: #222;
+}
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background: #1976d2;
+  color: #fff;
+  cursor: pointer;
+}
+button:hover {
+  background: #1565c0;
+}
 </style>

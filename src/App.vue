@@ -10,11 +10,10 @@
        drawer: false,
        items: [
          {label: "option.home", to: "/home"},
-         {label: "option.monitoring", to: "/monitoring"},
-         {label: "option.maintenance", to: "/maintenance"},
-         {label: "option.data-analytics", to: "/data-analytics"},
-        {label: "option.assign-user", to: "/assignUser"},
-         { label: 'option.categories', to: '/publishing/notifications' }
+         {label: "option.monitoring", to: "/machine/monitoring"},
+         {label: "option.maintenance", to: "/machine/maintenance"},
+         {label: "option.data-analytics", to: "/machine/data-analytics"},
+        {label: "option.assign-user", to: "/user/assign-user"}
        ]
      }
    },
@@ -46,8 +45,10 @@
       </template>
       <template #end>
         <div class="toolbar-end">
+          <router-link to="/machine/notifications">
           <i class="pi pi-bell" style="font-size: 2rem"></i>
-          <router-link to="/profile">
+          </router-link>
+          <router-link to="/user/profile">
             <i class="pi pi-user" style="font-size: 2rem; cursor: pointer"></i>
           </router-link>
         </div>

@@ -59,7 +59,7 @@ export default {
           name: this.nameOnCard,
           email: this.email,
           phone: '',
-          start_date: new Date(),
+          start_date: '',
           plant: '',
           role: '',
           permission: '',
