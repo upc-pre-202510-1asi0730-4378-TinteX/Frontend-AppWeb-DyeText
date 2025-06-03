@@ -56,6 +56,18 @@
     "created": "Notification created",
     "deleted": "Notification deleted"
   },
+  "assignUser":{
+    "title": "Manage Users",
+    "email": "Email",
+    "phone": "Phone",
+    "startDate": "Start Date",
+    "plant": "Plant",
+    "role":"Role",
+    "permission": "Permissions",
+    "add": "Add User",
+    "edit": "Edit User",
+    "delete": "Delete User"
+  },
   "maintenance": {
     "estimated-failure": "Estimated time to Failure",
     "days": "days",

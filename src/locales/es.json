@@ -56,6 +56,18 @@
     "created": "Notificación creada",
     "deleted": "Notificación eliminada"
   },
+  "assignUser":{
+    "title": "Administrar Usuarios",
+    "email": "Email",
+    "phone": "Telefono",
+    "startDate": "DIa de Inicio",
+    "plant": "Planta",
+    "role":"Rol",
+    "permission": "Permisos",
+    "add": "Agregar Usuario",
+    "edit": "Editar Usuario",
+    "delete": "Eliminar Usuario"
+  },
   "maintenance": {
     "estimated-failure": "Estimated time to Failure",
     "days": "days",
