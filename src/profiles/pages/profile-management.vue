@@ -11,29 +11,26 @@
       <form @submit.prevent="saveProfile">
         <div class="p-fluid p-formgrid p-grid">
           <div class="p-field p-col-12 p-md-6">
-            <label for="full_name">Nombre completo</label>
+            <label for="full_name">Nombre completo</label> <br>
             <pv-input-text id="full_name" v-model="profile.full_name" :disabled="!isEditing"/>
           </div>
           <div class="p-field p-col-12 p-md-6">
-            <label for="email">Email</label>
+            <label for="email">Email</label> <br>
             <pv-input-text id="email" v-model="profile.email" :disabled="!isEditing"/>
           </div>
           <div class="p-field p-col-12 p-md-6">
-            <label for="phone">Teléfono</label>
+            <label for="phone">Teléfono</label> <br>
             <pv-input-text id="phone" v-model="profile.phone" :disabled="!isEditing"/>
           </div>
           <div class="p-field p-col-12 p-md-6">
-            <label>Membresía</label>
+            <label>Membresía</label> <br>
             <pv-tag :value="profile.membership_active ? 'Activa' : 'Inactiva'" :severity="profile.membership_active ? 'success' : 'danger'"/>
           </div>
-          <div class="p-field p-col-12 p-md-6">
-            <label for="timezone">Zona horaria</label>
-            <pv-dropdown id="timezone" v-model="profile.timezone" :options="timezones" option-label="label" option-value="value" :disabled="!isEditing"/>
-          </div>
+
           <!-- Campo Tema con botón de alternancia -->
           <div class="p-field p-col-12 p-md-6" style="display: flex; align-items: center; gap: 0.5rem;">
             <div style="flex: 1;">
-              <label for="theme">Tema</label>
+              <label for="theme">Tema</label> <br>
               <pv-dropdown
                   id="theme"
                   v-model="profile.theme"
@@ -42,6 +39,11 @@
                   option-value="value"
                   @change="onThemeChange"
                   :disabled="!isEditing"
+              />
+              <pv-tag
+                  :value="profile.theme === 'light' ? 'Claro' : 'Oscuro'"
+                  :severity="profile.theme === 'light' ? 'info' : 'warning'"
+                  style="margin-top: 0.5rem;"
               />
             </div>
             <pv-button
@@ -53,7 +55,7 @@
                 @click="toggleTheme"
                 style="white-space: nowrap;"
             />
-          </div>
+          </div> <br>
         </div>
         <div class="profile-actions">
           <pv-button label="Cambiar contraseña" icon="pi pi-key" class="p-button-secondary" type="button" @click="onChangePassword"/>
@@ -74,10 +76,7 @@ export default {
       profile: {},
       originalProfile: {},
       isEditing: false,
-      timezones: [
-        { label: 'America/Lima', value: 'America/Lima' },
-        { label: 'Europe/Madrid', value: 'Europe/Madrid' }
-      ],
+
       themes: [
         { label: 'Claro', value: 'light' },
         { label: 'Oscuro', value: 'dark' }
@@ -166,5 +165,19 @@ body.theme-dark .p-button {
   background: #333 !important;
   color: #f4f6fa !important;
   border: none !important;
+}
+
+.theme-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.theme-wrapper > * {
+  flex-shrink: 0;
+}
+.theme-wrapper pv-dropdown {
+  flex: 1;
+  min-width: 150px;
 }
 </style>
