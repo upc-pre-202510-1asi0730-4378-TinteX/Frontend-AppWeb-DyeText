@@ -1,0 +1,1 @@
+import{a as e}from"./index-xsH4HHeE.js";const o=e.create({baseURL:"https://backend-dyetex.onrender.com/api/v1",headers:{"Content-Type":"application/json","Access-Control-Allow-Origin":"*"}});export{o as h};

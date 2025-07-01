@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/tasks';
+const API_URL = 'http://localhost:3000/api/v1/tasks';
 
 export async function createTask(task) {
     await axios.post('http://localhost:3000/tasks', task);
