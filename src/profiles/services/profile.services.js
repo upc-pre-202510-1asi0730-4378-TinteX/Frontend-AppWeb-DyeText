@@ -9,7 +9,7 @@ export class ProfileService {
     }
 
     updateProfile(id, data) {
-        const [firstName, ...rest] = data.full_name.trim().split(" ");
+        const [firstName, ...rest] = data.fullName.trim().split(" ");
         const lastName = rest.join(" ") || "";
 
         const payload = {
@@ -18,10 +18,11 @@ export class ProfileService {
             lastName,
             email: data.email,
             phone: data.phone,
-            membershipActive: data.membership_active,
+            membershipActive: data.membershipActive,
             theme: data.theme
         };
 
         return httpInstance.put(`${this.resourceEndPoint}/${id}`, payload);
     }
+
 }
