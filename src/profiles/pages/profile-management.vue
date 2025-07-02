@@ -11,8 +11,8 @@
       <form @submit.prevent="saveProfile">
         <div class="p-fluid p-formgrid p-grid">
           <div class="p-field p-col-12 p-md-6">
-            <label for="full_name">Nombre completo</label> <br>
-            <pv-input-text id="full_name" v-model="profile.full_name" :disabled="!isEditing"/>
+            <label for="fullName">Nombre completo</label> <br>
+            <pv-input-text id="fullName" v-model="profile.fullName" :disabled="!isEditing"/>
           </div>
           <div class="p-field p-col-12 p-md-6">
             <label for="email">Email</label> <br>
@@ -24,11 +24,11 @@
           </div>
           <div class="p-field p-col-12 p-md-6">
             <label>Membresía</label> <br>
-            <pv-tag :value="profile.membership_active ? 'Activa' : 'Inactiva'" :severity="profile.membership_active ? 'success' : 'danger'"/>
+            <pv-tag :value="profile.membershipActive ? 'Activa' : 'Inactiva'" :severity="profile.membershipActive ? 'success' : 'danger'"/>
           </div>
 
           <!-- Campo Tema con botón de alternancia -->
-          <div class="p-field p-col-12 p-md-6" style="display: flex; align-items: center; gap: 0.5rem;">
+          <div class="p-field p-col-12 p-md-6 theme-wrapper">
             <div style="flex: 1;">
               <label for="theme">Tema</label> <br>
               <pv-dropdown
@@ -46,16 +46,17 @@
                   style="margin-top: 0.5rem;"
               />
             </div>
-            <pv-button
-                v-if="isEditing"
-                :label="`Cambiar a tema ${profile.theme === 'light' ? 'oscuro' : 'claro'}`"
-                icon="pi pi-refresh"
-                class="p-button-secondary"
-                type="button"
-                @click="toggleTheme"
-                style="white-space: nowrap;"
-            />
-          </div> <br>
+            <div>
+              <pv-button
+                  v-if="isEditing"
+                  :label="`Cambiar a tema ${profile.theme === 'light' ? 'oscuro' : 'claro'}`"
+                  icon="pi pi-refresh"
+                  class="p-button-secondary"
+                  type="button"
+                  @click="toggleTheme"
+              />
+            </div>
+          </div>
         </div>
         <div class="profile-actions">
           <pv-button label="Cambiar contraseña" icon="pi pi-key" class="p-button-secondary" type="button" @click="onChangePassword"/>
@@ -86,6 +87,8 @@ export default {
   async created() {
     const service = new ProfileService();
     this.profile = await service.getProfile("1");
+    if (!this.profile.theme) this.profile.theme = 'light';
+    if (!this.profile.timezone) this.profile.timezone = 'America/Lima';
     this.originalProfile = { ...this.profile };
     this.applyTheme(this.profile.theme);
   },
@@ -145,6 +148,16 @@ export default {
   margin-top: 2rem;
   justify-content: flex-end;
 }
+.theme-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.theme-wrapper > div {
+  flex: 1;
+  min-width: 150px;
+}
 </style>
 
 <style>
@@ -165,19 +178,5 @@ body.theme-dark .p-button {
   background: #333 !important;
   color: #f4f6fa !important;
   border: none !important;
-}
-
-.theme-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-.theme-wrapper > * {
-  flex-shrink: 0;
-}
-.theme-wrapper pv-dropdown {
-  flex: 1;
-  min-width: 150px;
 }
 </style>

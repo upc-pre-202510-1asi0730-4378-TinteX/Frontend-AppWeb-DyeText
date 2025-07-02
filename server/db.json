@@ -87,7 +87,7 @@
       "subscription_active": false
     }
   ],
-  "machines_information": [
+  "machines-information": [
     {
       "id": "0f8fad5b-d9cb-469f-a165-70867728950e",
       "time_spent": "03:10:00",
@@ -161,7 +161,7 @@
       "speed": 1400
     }
   ],
-  "textile_machines": [
+  "textile-machines": [
     {
       "id": "8d7e0f42-4e8f-41c0-8d2e-61a91adf908f",
       "machine_information_id": "0f8fad5b-d9cb-469f-a165-70867728950e",
@@ -309,10 +309,10 @@
   "profiles": [
     {
       "id": "1",
-      "full_name": "Hector Rios",
+      "fullName": "Hector Rios",
       "email": "hectorRios@gmail.com",
       "phone": "941234056",
-      "membership_active": true,
+      "membershipActive": true,
       "theme": "light"
     }
   ]

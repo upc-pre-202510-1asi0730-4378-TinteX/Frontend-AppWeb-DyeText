@@ -9,6 +9,19 @@ export class ProfileService {
     }
 
     updateProfile(id, data) {
-        return httpInstance.put(`${this.resourceEndPoint}/${id}`, data);
+        const [firstName, ...rest] = data.full_name.trim().split(" ");
+        const lastName = rest.join(" ") || "";
+
+        const payload = {
+            id,
+            firstName,
+            lastName,
+            email: data.email,
+            phone: data.phone,
+            membershipActive: data.membership_active,
+            theme: data.theme
+        };
+
+        return httpInstance.put(`${this.resourceEndPoint}/${id}`, payload);
     }
 }

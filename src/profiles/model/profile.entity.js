@@ -1,17 +1,17 @@
 export class Profile {
     constructor({
                     id = "",
-                    full_name = "",
+                    fullName = "",
                     email = "",
                     phone = "",
-                    membership_active = false,
+                    membershipActive = true,
                     theme = "light"
                 } = {}) {
         this.id = id;
-        this.full_name = full_name;
+        this.fullName = fullName;
         this.email = email;
         this.phone = phone;
-        this.membership_active = membership_active;
+        this.membershipActive  = membershipActive;
 
         this.theme = theme;
     }
