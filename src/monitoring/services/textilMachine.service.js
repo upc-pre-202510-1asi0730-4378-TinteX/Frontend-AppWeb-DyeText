@@ -12,6 +12,7 @@ export class TextileMachineService{
     }
 
     create(resource) {
+        console.log(resource);
         return httpInstance.post(this.resourceEndPoint, resource);
     }
 

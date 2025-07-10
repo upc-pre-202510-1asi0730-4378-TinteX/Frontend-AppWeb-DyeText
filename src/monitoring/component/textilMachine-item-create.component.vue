@@ -3,6 +3,9 @@ import CreateAndEdit from "../../shared/components/create-and-edit.component.vue
 import {TextileMachineService} from "../services/textilMachine.service.js";
 import {TextileMachine} from "../model/textileMachine.entity.js";
 import {uuid} from "@primevue/core";
+import {readonly} from "vue";
+import {MachineInformationService} from "../../maintenance/service/machine-information.service.js";
+import {MachineInformation} from "../../maintenance/model/machine-information.entity.js";
 
 export default {
   name: "textilMachine-create-component",
@@ -11,12 +14,15 @@ export default {
     return {
       submitted: false,
       textileMachines: [],
+      machineInformations: [],
       textileMachineService: null,
+      machineInformationService: null,
       name: '',
       zone: '',
       floor: '',
       type: '',
       numberMachine: '',
+      machineInformationId: "",
     }
   },
   props: {
@@ -41,16 +47,45 @@ export default {
       const id = uuid()
       const status = ["Operational","Under Maintenance","Offline"];
 
+      const generateRandomDouble = (min, max) => {
+        return Math.random() * (max - min) + min;
+      };
+
+      const generateRandomInt = (min, max) => {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      };
+      
+      const newMachineInformation = {
+        timeSpent: generateRandomDouble(0, 24).toFixed(2),
+        dayProgress: generateRandomDouble(0, 100).toFixed(2), 
+        failureRate: generateRandomDouble(0, 10).toFixed(2), 
+        amountFailure: generateRandomInt(0, 5),
+        userId: "1",
+        temperature: generateRandomDouble(20, 80).toFixed(2),
+        vibration: generateRandomDouble(0.1, 5).toFixed(2), 
+        energy: generateRandomDouble(100, 1000).toFixed(2), 
+        speed: generateRandomDouble(50, 500).toFixed(2), 
+      }
+      
+      this.machineInformationService.create(newMachineInformation).then((response) => {
+        console.log("Machine information created successfully:", response);
+        this.machineInformationId = response.data.id;
+        console.log(this.machineInformationId);
+      }).catch((error) => {
+        console.error("Error creating machine information:", error);
+      });
+      
       const newMachine = {
-        id: id,
-        machineInformationId: "",
+        machineInformationId: this.machineInformationId.toString(),
         name: this.name,
         assetType: this.type,
         status: status[Math.floor(Math.random() * status.length)],
         serialNumber: this.numberMachine,
         floor: this.floor,
         zone: this.zone,
-        dateInstallation: new Date().toDateString(),
+        dateInstallation: new Date().toISOString().slice(0, 10).toString(),
       }
 
       this.textileMachineService.create(newMachine)
@@ -58,10 +93,16 @@ export default {
   },
   created() {
     this.textileMachineService = new TextileMachineService();
+    this.machineInformationService = new MachineInformationService();
 
     this.textileMachineService.getAll().then((response) => {
       this.textileMachines = response.map(elem => new TextileMachine(elem));
       console.log(this.textileMachines);
+    }).catch((error) => {console.log(error)});
+    
+    this.machineInformationService.getAll().then((response) => {
+      this.machineInformations = response.map(elem => new MachineInformation(elem));
+      console.log(this.machineInformations);
     }).catch((error) => {console.log(error)});
   }
 }
