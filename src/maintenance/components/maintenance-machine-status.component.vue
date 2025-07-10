@@ -29,18 +29,18 @@ export default {
   },
   computed: {
     machineInfo() {
-      console.log('machine_information_id:', this.machine.machine_information_id);
+      console.log('machine_information_id:', this.machine.machineInformationId);
       console.log('machinesInformation:', this.machinesInformation);
 
       if (!this.machine) return null;
       return this.machinesInformation.find(
-          (element) => String(element.id) === String(this.machine.machine_information_id)
+          (element) => String(element.id) === String(this.machine.machineInformationId)
       );
     },
     getUserOfMachine() {
       if (!this.machineInfo) return null;
       return this.users.find(
-          (elem) => String(elem.id) === String(this.machineInfo.user_id)
+          (elem) => String(elem.id) === String(this.machineInfo.userId)
       );
     }
   },
@@ -81,7 +81,7 @@ export default {
       <i class="pi pi-arrow-circle-left" style="cursor: pointer" @click="$emit('close')"></i>
       <h2>{{ $t('machine') }} {{ $t('home.status') }}</h2>
     </div>
-    <div>{{ $t('machine') }} {{ $t('monitoring.number') }} <strong>{{machine.number_machine}}</strong></div>
+    <div>{{ $t('machine') }} {{ $t('monitoring.number') }} <strong>{{machine.serialNumber}}</strong></div>
     <div>
       <h2 style="font-size: 50px">Detail</h2>
       <div v-if="machineInfo" class="machine-info-container">
@@ -129,12 +129,12 @@ export default {
       <div>
         <h2>{{  $t('maintenance.current-status') }}</h2>
         <span>{{  $t('home.status') }}: {{ machine.status }}</span> <br>
-        <span>{{ $t('maintenance.time-spent') }}: {{ machineInfo.time_spent }}</span>
+        <span>{{ $t('maintenance.time-spent') }}: {{ machineInfo.timeSpent }}</span>
       </div>
       <div>
         <h2>{{ $t('maintenance.daily-metrics') }}</h2>
-        <span>{{ $t('maintenance.day-progress') }}: {{ machineInfo.day_progress }}</span><br>
-        <span>{{ $t('maintenance.failure-rate') }}: {{ machineInfo.failure_rate }}</span>
+        <span>{{ $t('maintenance.day-progress') }}: {{ machineInfo.dayProgress }}</span><br>
+        <span>{{ $t('maintenance.failure-rate') }}: {{ machineInfo.failureRate }}</span>
       </div>
     </div>
   </div>

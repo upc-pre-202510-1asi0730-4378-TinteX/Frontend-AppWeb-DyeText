@@ -6,24 +6,24 @@
 export class TextileMachine {
     constructor({
                     id = '',
+                    machineInformationId = '',
                     name = '',
-                    asset_type = '',
+                    assetType = '',
                     status = '',
-                    number_machine = '',
+                    serialNumber = '',
                     floor = '',
                     zone = '',
-                    date_installation = '',
-                    machine_information_id = ''
+                    dateInstallation = '',
                 }) {
         this.id = id;
+        this.machineInformationId = machineInformationId ? String(machineInformationId) : '';
         this.name = name;
-        this.asset_type = asset_type;
+        this.assetType = assetType;
         this.status = status;
-        this.number_machine = number_machine;
+        this.serialNumber = serialNumber;
         this.floor = floor;
         this.zone = zone;
-        this.date_installation = date_installation;
-        this.machine_information_id = machine_information_id ? String(machine_information_id) : '';
+        this.dateInstallation = dateInstallation;
     }
 
 

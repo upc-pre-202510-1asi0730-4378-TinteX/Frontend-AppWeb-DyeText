@@ -43,13 +43,14 @@ export default {
 
       const newMachine = {
         id: id,
+        machineInformationId: "",
         name: this.name,
-        asset_type: this.type,
+        assetType: this.type,
         status: status[Math.floor(Math.random() * status.length)],
-        number_machine: this.numberMachine,
+        serialNumber: this.numberMachine,
         floor: this.floor,
         zone: this.zone,
-        date_installation: new Date().toDateString(),
+        dateInstallation: new Date().toDateString(),
       }
 
       this.textileMachineService.create(newMachine)

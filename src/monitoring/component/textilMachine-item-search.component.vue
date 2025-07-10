@@ -26,10 +26,10 @@ export default {
 
       return this.textileMachines.filter(machine => {
         return (
-            machine.number_machine.toLowerCase().includes(this.machineName.toLowerCase()) ||
+            machine.numberMachine.toLowerCase().includes(this.machineName.toLowerCase()) ||
             machine.status.toLowerCase().includes(this.machineName.toLowerCase()) ||
             machine.zone.toLowerCase().includes(this.machineName.toLowerCase()) ||
-            machine.asset_type.toLowerCase().includes(this.machineName.toLowerCase()) ||
+            machine.assetType.toLowerCase().includes(this.machineName.toLowerCase()) ||
             machine.name.toLowerCase().includes(this.machineName.toLowerCase())
         )
       });
@@ -83,7 +83,7 @@ export default {
     },
     uniqueAssetType(){
       const see = new Set();
-      return this.textileMachines.map(machine => machine.asset_type)
+      return this.textileMachines.map(machine => machine.assetType)
           .filter(assetType => {
             if (see.has(assetType))
               return false;
@@ -170,7 +170,7 @@ export default {
           <div class="machines-summary-info">
             <i class="pi pi-exclamation-circle"></i>
             <div>
-              <span>{{ $t('machine') }}: {{ textileMachine.number_machine }} </span>
+              <span>{{ $t('machine') }}: {{ textileMachine.serialNumber }} </span>
               <span> {{ textileMachine.status }} </span>
             </div>
           </div>

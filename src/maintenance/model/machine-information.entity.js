@@ -1,22 +1,22 @@
 export class MachineInformation{
     constructor({
                     id = '',
-                    time_spent = '',
-                    day_progress = '',
-                    failure_rate = '',
-                    amount_failure = '',
-                    user_id = '',
+                    timeSpent = '',
+                    dayProgress = '',
+                    failureRate = '',
+                    amountFailure = '',
+                    userId = '',
                     temperature = '',
                     vibration = '',
                     energy = '',
                     speed = ''
                 }){
         this.id = id;
-        this.time_spent = time_spent;
-        this.day_progress = day_progress;
-        this.failure_rate = failure_rate;
-        this.amount_failure = amount_failure;
-        this.user_id = user_id;
+        this.timeSpent = timeSpent;
+        this.dayProgress = dayProgress;
+        this.failureRate = failureRate;
+        this.amountFailure = amountFailure;
+        this.userId = userId;
         this.temperature = temperature;
         this.vibration = vibration;
         this.energy = energy;
