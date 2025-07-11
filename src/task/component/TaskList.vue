@@ -24,10 +24,8 @@
 <script>
 import { getTasks } from '/src/task/services/task.service.js';
 import { getMachines } from '/src/task/services/machine.service.js';
-import AddTaskModal from '/src/task/component/AddTaskModel.component.vue';
 
 export default {
-  components: { AddTaskModal },
   data() {
     return {
       machines: [],
