@@ -13,7 +13,7 @@ export class AssignUserService {
      * @returns {Promise<AxiosResponse<any>>} Promise that resolves to an array of categories
      */
     getAll() {
-        return httpInstance.get(this.resourceEndpoint);
+        return httpInstance.get(`${this.resourceEndpoint}/assign-users`);
     }
 
     /**
@@ -22,7 +22,7 @@ export class AssignUserService {
      * @returns {Promise<AxiosResponse<any>>} Promise that resolves to the category object
      */
     getById(id) {
-        return httpInstance.get(`${this.resourceEndpoint}/${id}`);
+        return httpInstance.get(`${this.resourceEndpoint}/${id}/assign-user`);
     }
 
     /**
@@ -32,7 +32,7 @@ export class AssignUserService {
      * @returns {Promise<AxiosResponse<any>>} Promise that resolves to the created category
      */
     create(resource) {
-        return httpInstance.post(this.resourceEndpoint, resource);
+        return httpInstance.post(`${this.resourceEndpoint}/assign-users`, resource);
     }
 
     /**
@@ -43,7 +43,7 @@ export class AssignUserService {
      * @returns {Promise<AxiosResponse<any>>} Promise that resolves to the updated category
      */
     update(id, resource) {
-        return httpInstance.put(`${this.resourceEndpoint}/${id}`, resource);
+        return httpInstance.put(`${this.resourceEndpoint}/${id}/assign-user`, resource);
     }
 
     /**
@@ -52,7 +52,7 @@ export class AssignUserService {
      * @returns {Promise<AxiosResponse<any>>} Promise that resolves when the category is deleted
      */
     delete(id) {
-        return httpInstance.delete(`${this.resourceEndpoint}/${id}`);
+        return httpInstance.delete(`${this.resourceEndpoint}/${id}/assign-user`);
     }
 
     /**
@@ -61,6 +61,6 @@ export class AssignUserService {
      * @returns {Promise<AxiosResponse<any>>} Promise that resolves to an array of matching categories
      */
     getByName(name) {
-        return httpInstance.get(`${this.resourceEndpoint}?name=${name}`);
+        return httpInstance.get(`${this.resourceEndpoint}/assign-users?name=${name}`);
     }
 }

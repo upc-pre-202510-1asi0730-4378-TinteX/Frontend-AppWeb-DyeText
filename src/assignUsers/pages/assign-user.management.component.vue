@@ -132,7 +132,7 @@ export default {
         <h3>{{ user.name }}</h3>
         <p><strong>{{ $t('assignUser.email') }}:</strong> {{ user.email }}</p>
         <p><strong>{{ $t('assignUser.phone') }}:</strong> {{ user.phone }}</p>
-        <p><strong>{{ $t('assignUser.startDate') }}:</strong> {{ user.start_date }}</p>
+        <p><strong>{{ $t('assignUser.startDate') }}:</strong> {{ user.startDate }}</p>
         <p><strong>{{ $t('assignUser.plant') }}:</strong> {{ user.plant }}</p>
         <p><strong>{{ $t('assignUser.role') }}:</strong> {{ user.role }}</p>
         <p><strong>{{ $t('assignUser.permission') }}:</strong> {{ user.permission }}</p>

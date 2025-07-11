@@ -15,13 +15,13 @@ export class AssignUser {
                     name = '',
                     email = '',
                     phone= '',
-                    start_date = '',
+                    startDate = '',
                     plant= '',
                     role= '',
                     permission = '',
                     card_id='',
                     subscription_active=false
-    }) {
+                }) {
 
         /**
          * @type {string}
@@ -31,7 +31,7 @@ export class AssignUser {
         this.name = name;
         this.email = email;
         this.phone = phone;
-        this.start_date = start_date;
+        this.startDate = startDate;
         this.plant = plant;
         this.role = role;
         this.permission = permission;

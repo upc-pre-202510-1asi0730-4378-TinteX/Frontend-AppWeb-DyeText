@@ -96,7 +96,7 @@ export default {
 
         <div class="field">
           <pv-float-label>
-            <pv-input-text id="start_date" v-model="item.start_date" :class="{ 'p-invalid': submitted && !item.start_date }"/>
+            <pv-input-text id="startDate" v-model="item.startDate" :class="{ 'p-invalid': submitted && !item.start_date }"/>
             <label for="start_date">Start Date</label>
           </pv-float-label>
         </div>

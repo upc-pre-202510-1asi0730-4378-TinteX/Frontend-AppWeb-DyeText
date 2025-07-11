@@ -1,4 +1,3 @@
-<!-- src/alertSystem/components/notification-item-create-and-edit-dialog.vue -->
 <script>
 import CreateAndEdit from "../../shared/components/create-and-edit.component.vue";
 
@@ -16,8 +15,8 @@ export default {
       localItem: {
         id: '',
         message: '',
-        dateTime: '',
-        textilMachine: '',
+        createdAt: '',
+        textileMachine: '',
         markAsRead: false,
         ...this.item
       },
@@ -31,8 +30,8 @@ export default {
         this.localItem = {
           id: '',
           message: '',
-          dateTime: '',
-          textilMachine: '',
+          createdAt: '',
+          textileMachine: '',
           markAsRead: false,
           ...nuevo
         };
@@ -77,26 +76,13 @@ export default {
           </pv-float-label>
         </div>
 
-
+        <!-- Textile Machine -->
         <div class="field">
           <pv-float-label>
-            <label for="dateTime">Date & Time</label>
+            <label for="textileMachine">Textile Machine</label>
             <pv-input-text
-                id="dateTime"
-                v-model="localItem.dateTime"
-                placeholder="2025-05-15T10:45:00Z"
-                :class="{ 'p-invalid': submitted && !localItem.dateTime }"
-            />
-          </pv-float-label>
-        </div>
-
-        <!-- Textil Machine -->
-        <div class="field">
-          <pv-float-label>
-            <label for="textilMachine">Textil Machine</label>
-            <pv-input-text
-                id="textilMachine"
-                v-model="localItem.textilMachine"
+                id="textileMachine"
+                v-model="localItem.textileMachine"
             />
           </pv-float-label>
         </div>
@@ -114,21 +100,3 @@ export default {
     </template>
   </create-and-edit>
 </template>
-
-<style scoped>
-.form-content {
-  max-height: 60vh;
-  overflow-y: auto;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.checkbox-field {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-</style>

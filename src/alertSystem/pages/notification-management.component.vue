@@ -39,8 +39,8 @@ export default {
       this.notification = {
         id: String(maxId + 1),
         message: '',
-        dateTime: '',
-        textilMachine: '',
+        createdAt: null,
+        textileMachine: '',
         markAsRead: false
       };
 
@@ -62,19 +62,26 @@ export default {
     onSaveRequested(item) {
       this.submitted = true;
 
-      if (!item.message.trim() || !item.dateTime) {
-        return;
+      if (!item.message.trim()) return;
+
+      if (this.isEdit) {
+        this.notificationService.update(item.id, item)
+            .then(response => {
+              const index = this.notifications.findIndex(n => n.id === item.id);
+              if (index !== -1) {
+                this.notifications.splice(index, 1, new Notification(response.data));
+              }
+              this.notifySuccessfulAction("Notification Updated");
+            })
+            .catch(console.error);
+      } else {
+        this.notificationService.create(item)
+            .then(response => {
+              this.notifications.push(new Notification(response.data));
+              this.notifySuccessfulAction("Notification Created");
+            })
+            .catch(console.error);
       }
-
-
-      this.notificationService.create(item)
-          .then(response => {
-
-            this.notifications.push(new Notification(response.data));
-            this.notifySuccessfulAction("Notification Created");
-          })
-          .catch(console.error);
-
 
       this.createAndEditDialogIsVisible = false;
     },
@@ -83,13 +90,10 @@ export default {
 
       const idsToDelete = items.map(i => i.id);
 
-
       Promise.all(idsToDelete.map(id => this.notificationService.delete(id)))
           .then(() => {
-
             this.notifications = this.notifications.filter(n => !idsToDelete.includes(n.id));
             this.selectedNotifications = [];
-
             this.notifySuccessfulAction(`${idsToDelete.length} notification(s) deleted`);
           })
           .catch(error => {
@@ -103,13 +107,10 @@ export default {
           });
     },
     onDeleteItem(item) {
-
       this.notificationService
           .delete(item.id)
           .then(() => {
-
             this.notifications = this.notifications.filter(n => n.id !== item.id);
-
             this.notifySuccessfulAction("Notification Deleted");
           })
           .catch(err => {
@@ -122,9 +123,7 @@ export default {
             });
           });
     }
-
   },
-
 
   created() {
     this.notificationService = new NotificationService();
@@ -156,14 +155,14 @@ export default {
             style="min-width:24rem"
         />
         <pv-column
-            field="dateTime"
-            :header="$t('alertSystem.dateTime')"
+            field="createdAt"
+            :header="$t('alertSystem.createdAt')"
             sortable
             style="min-width:20rem"
         />
         <pv-column
-            field="textilMachine"
-            :header="$t('alertSystem.textilMachine')"
+            field="textileMachine"
+            :header="$t('alertSystem.textileMachine')"
             style="min-width:20rem"
         />
         <pv-column
@@ -183,5 +182,3 @@ export default {
     />
   </div>
 </template>
-
-<style scoped></style>
