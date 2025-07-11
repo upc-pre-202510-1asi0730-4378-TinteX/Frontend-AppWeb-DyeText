@@ -1,35 +1,27 @@
 // src/alertSystem/services/notification.service.js
-import axios from 'axios';
-
-const API_BASE = 'http://localhost:5260/api/v1/monitoring/textiles-machine';
-const RESOURCE = 'notification';
+import httpInstance from "../../shared/services/http.instance.js";
 
 export class NotificationService {
-    constructor() {
-
-        this.api = axios.create({
-            baseURL: API_BASE,
-            headers: { 'Content-Type': 'application/json' }
-        });
-    }
+    /** @type {string} The API endpoint for notifications */
+    resourceEndpoint = import.meta.env.VITE_NOTIFICATION_ENDPOINT_PATH;
 
     getAll() {
-        return this.api.get(`/${RESOURCE}`);
+        return httpInstance.get(this.resourceEndpoint);
     }
 
     getById(id) {
-        return this.api.get(`/${id}/${RESOURCE}`);
+        return httpInstance.get(`${this.resourceEndpoint}/${id}`);
     }
 
     create(notification) {
-        return this.api.post(`/${RESOURCE}`, notification);
+        return httpInstance.post(this.resourceEndpoint, notification);
     }
 
     update(id, notification) {
-        return this.api.put(`/${id}/${RESOURCE}`, notification);
+        return httpInstance.put(`${this.resourceEndpoint}/${id}`, notification);
     }
 
     delete(id) {
-        return this.api.delete(`/${id}/${RESOURCE}`);
+        return httpInstance.delete(`${this.resourceEndpoint}/${id}`);
     }
 }

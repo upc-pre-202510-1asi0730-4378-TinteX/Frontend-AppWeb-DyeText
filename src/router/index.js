@@ -1,4 +1,5 @@
 import {createRouter, createWebHistory} from "vue-router";
+import {authenticationGuard} from "../iam/services/authentication.guard.js";
 
 
 /**
@@ -10,6 +11,8 @@ const HomeComponent = () => import('../public/pages/home.component.vue');
 const NotificationManagementComponent = () => import('../alertSystem/pages/notification-management.component.vue');
 const Monitoring = () => import('../monitoring/pages/textilMachine-management.component.vue');
 const PageNotFoundComponent = () => import('../public/pages/page-not-found.component.vue');
+const SignInComponent = () => import('../iam/pages/sign-in.component.vue');
+const SignUpComponent = () => import('../iam/pages/sign-up.component.vue');
 const AssignUsersManagementComponent = () => import('../assignUsers/pages/assign-user.management.component.vue');
 const MaintenanceManagementComponent = () => import('../maintenance/pages/maintenance-management.component.vue');
 const SubscriptionManagementComponent = () => import('../subscriptions-and-payments/pages/subscriptions-and-payments-management.component.vue');
@@ -28,18 +31,19 @@ const ProfileManagementComponent = () => import('../profiles/pages/profile-manag
 
 
 const routes = [
-    {   path: '/home',                  name: 'home',               component: HomeComponent,               meta: {title: 'Home'}},
-    {   path: '/machine/notifications', name: 'notifications', component: NotificationManagementComponent, meta: { title: 'Notifications' } },
-    {   path: '/machine/monitoring',                  name: 'Monitoring',               component: Monitoring,               meta: {title: 'Monitoring'}},
-    {   path: '/machine/maintenance',                  name: 'Maintenance',               component: MaintenanceManagementComponent,               meta: {title: 'Maintenance'}},
-    {   path: '/machine/monitoring/machine-configuration/:id', name: 'machine-configuration', component: ConfigurationPage, props: true},
-    {   path: '/machine/data-analytics', name: 'Analytics', component: DataAnalyticsManagementComponent, meta: { title: 'Data Analytics' } },
-    {   path: '/user/subscription',  name: 'Subscription',  component: SubscriptionManagementComponent,               meta: {title: 'Subscription'}},
-    {   path: '/user/assign-user',            name: 'assignUser',         component: AssignUsersManagementComponent, meta: {title: 'AssignUser'}},
-    {   path: '/',                      name: 'default',            redirect: {name: 'home'}},
-    {   path: '/:pathMatch(.*)*',       name: 'not-found',          component: PageNotFoundComponent,       meta: {title: 'Page not found'}},
-    { path: '/user/profile', name: 'profile', component: ProfileManagementComponent, meta: { title: 'Perfil' } }
-
+    {   path: '/home',                                                 name: 'home',                        component: HomeComponent,                           meta: {title: 'Home'}},
+    {   path: '/machine/notifications',                                name: 'notifications',               component: NotificationManagementComponent,         meta: { title: 'Notifications' } },
+    {   path: '/machine/monitoring',                                   name: 'Monitoring',                  component: Monitoring,                              meta: {title: 'Monitoring'}},
+    {   path: '/machine/maintenance',                                  name: 'Maintenance',                 component: MaintenanceManagementComponent,          meta: {title: 'Maintenance'}},
+    {   path: '/machine/monitoring/machine-configuration/:id',         name: 'machine-configuration',       component: ConfigurationPage,                       props: true},
+    {   path: '/machine/data-analytics',                               name: 'Analytics',                   component: DataAnalyticsManagementComponent,        meta: { title: 'Data Analytics' } },
+    {   path: '/user/subscription',                                    name: 'Subscription',                component: SubscriptionManagementComponent,         meta: {title: 'Subscription'}},
+    {   path: '/user/assign-user',                                     name: 'assignUser',                  component: AssignUsersManagementComponent,          meta: {title: 'AssignUser'}},
+    {   path: '/sign-in',                                              name: 'sign-in',                     component: SignInComponent,                         meta: {title: 'Sign-In'}},
+    {   path: '/sign-up',                                              name: 'sign-up',                     component: SignUpComponent,                         meta: {title: 'Sign-Up'}},
+    {   path: '/',                                                     name: 'default',                     redirect: {name: 'home'}},
+    {   path: '/:pathMatch(.*)*',                                      name: 'not-found',                   component: PageNotFoundComponent,                   meta: {title: 'Page not found'}},
+    {   path: '/user/profile',                                         name: 'profile',                     component: ProfileManagementComponent,              meta: {title: 'Profile' } }
 ]
 
 
@@ -65,7 +69,8 @@ router.beforeEach((to, from, next) => {
     // Set the page title
     let baseTitle = 'DyeTex';
     document.title = `${baseTitle} | ${to.meta['title']}`;
-    next();
+    // Call the authentication guard
+    authenticationGuard(to, from, next);
 });
 
 export default router;

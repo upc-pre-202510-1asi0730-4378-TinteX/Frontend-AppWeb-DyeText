@@ -1,28 +1,29 @@
 <script>
- import LanguageSwitcher from "./public/components/language-switcher.component.vue";
- import {defineComponent} from "vue";
+import LanguageSwitcher from "./public/components/language-switcher.component.vue";
+import {defineComponent} from "vue";
+import AuthenticationSection from "./iam/components/authentication-section.component.vue";
 
- export default defineComponent({
-   name: "App",
-   components: {LanguageSwitcher},
-   data(){
-     return {
-       drawer: false,
-       items: [
-         {label: "option.home", to: "/home"},
-         {label: "option.monitoring", to: "/machine/monitoring"},
-         {label: "option.maintenance", to: "/machine/maintenance"},
-         {label: "option.data-analytics", to: "/machine/data-analytics"},
+export default defineComponent({
+  name: "App",
+  components: {AuthenticationSection, LanguageSwitcher},
+  data(){
+    return {
+      drawer: false,
+      items: [
+        {label: "option.home", to: "/home"},
+        {label: "option.monitoring", to: "/machine/monitoring"},
+        {label: "option.maintenance", to: "/machine/maintenance"},
+        {label: "option.data-analytics", to: "/machine/data-analytics"},
         {label: "option.assign-user", to: "/user/assign-user"}
-       ]
-     }
-   },
-   methods: {
-     toggleDrawer(){
-       this.drawer = !this.drawer;
-     }
-   }
- })
+      ]
+    }
+  },
+  methods: {
+    toggleDrawer(){
+      this.drawer = !this.drawer;
+    }
+  }
+})
 
 </script>
 
@@ -46,12 +47,13 @@
       <template #end>
         <div class="toolbar-end">
           <router-link to="/machine/notifications">
-          <i class="pi pi-bell" style="font-size: 2rem"></i>
+            <i class="pi pi-bell" style="font-size: 2rem"></i>
           </router-link>
           <router-link to="/user/profile">
             <i class="pi pi-user" style="font-size: 2rem; cursor: pointer"></i>
           </router-link>
         </div>
+        <authentication-section/>
         <language-switcher/>
       </template>
     </pv-toolbar>
