@@ -16,7 +16,6 @@
 <script>
 import ConnectionForm from '../components/ConnectionForm.vue';
 import { testConnection, getMachineInformation } from '../services/connection.service';
-import {TextileMachine} from "../../monitoring/model/textileMachine.entity.js";
 
 export default {
   components: { ConnectionForm },

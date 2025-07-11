@@ -2,7 +2,6 @@
 import CreateAndEdit from "../../shared/components/create-and-edit.component.vue";
 import {TextileMachineService} from "../services/textilMachine.service.js";
 import {TextileMachine} from "../model/textileMachine.entity.js";
-import {uuid} from "@primevue/core";
 import {MachineInformationService} from "../../maintenance/service/machine-information.service.js";
 import {MachineInformation} from "../../maintenance/model/machine-information.entity.js";
 
@@ -42,8 +41,7 @@ export default {
       this.submitted = true;
       this.$emit('save-requested', this.item);
 
-      const id = uuid()
-      const status = ["Operational","Under Maintenance","Offline"];
+      const status = ["Operational","Under Maintenance","Offline", "Critical"];
 
       const generateRandomDouble = (min, max) => {
         return Math.random() * (max - min) + min;
@@ -202,13 +200,5 @@ export default {
   }
 }
 
-
-.return-to-hide{
-  display: none;
-}
-
-.return-to-show{
-  display: block;
-}
 
 </style>
