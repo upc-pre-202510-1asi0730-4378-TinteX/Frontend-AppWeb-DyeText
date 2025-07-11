@@ -5,6 +5,7 @@ import {TextileMachineService} from "../../monitoring/services/textilMachine.ser
 import {TextileMachine} from "../../monitoring/model/textileMachine.entity.js";
 import {MachineInformationService} from "../../maintenance/service/machine-information.service.js";
 import {MachineInformation} from "../../maintenance/model/machine-information.entity.js";
+import {getTasks} from "../../task/services/task.service.js";
 Chart.register(...registerables);
 export default {
   name: 'data-analytics-charts',
@@ -31,6 +32,7 @@ export default {
   async created() {
     this.textileMachineService = new TextileMachineService();
     this.machineInformationService = new MachineInformationService();
+    this.tasks = getTasks();
 
     try {
       // Fetch all necessary data concurrently
@@ -67,6 +69,16 @@ export default {
             return info ? info.amountFailure : 0;
           })
         }]
+      };
+
+     const estados = [...new Set(this.tasks.map(t => t.status))];
+      this.barDataC = {
+         labels: estados,
+         datasets: [{
+           label: 'Number of Tasks',
+           backgroundColor: '#FFA726',
+           data: estados.map(e => this.tasks.filter(t => t.status === e).length)
+         }]
       };
 
       console.log("barDataA populated:", this.barDataA);

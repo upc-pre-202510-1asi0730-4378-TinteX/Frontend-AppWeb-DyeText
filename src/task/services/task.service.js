@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/tasks';
+const API_URL = 'http://localhost:5260/api/v1/designandplanning/textiles-machine/tasks';
 
 export async function createTask(task) {
-    await axios.post('http://localhost:3000/tasks', task);
+    await axios.post('http://localhost:5260/api/v1/designandplanning/textiles-machine/tasks', task);
 }
 export async function getTasks() {
     const response = await axios.get(API_URL);
