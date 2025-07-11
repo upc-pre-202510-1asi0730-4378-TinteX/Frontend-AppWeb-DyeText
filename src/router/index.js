@@ -19,8 +19,8 @@ const SubscriptionManagementComponent = () => import('../subscriptions-and-payme
 const DataAnalyticsManagementComponent = () => import('../analytics/pages/data-analytics-management.vue');
 const ConfigurationPage = () => import('../machine-configuration/pages/ConfigurationPage.vue');
 const ProfileManagementComponent = () => import('../profiles/pages/profile-management.vue');
-const PlanningTaskListComponent = () => import('../../src/planningTask/pages/PlanningTaskList.vue'); /// <summary>Component for listing planning tasks</summary>
-const CreatePlanningTaskComponent = () => import('../../src/planningTask/pages/CreatePlanningTaskPage.vue'); /// <summary>Component for creating a new planning task</summary>
+const PlanningTaskListComponent = () => import('../planningTask/pages/PlanningTaskList.vue'); /// <summary>Component for listing planning tasks</summary>
+const CreatePlanningTaskComponent = () => import('../planningTask/pages/CreatePlanningTaskPage.vue'); /// <summary>Component for creating a new planning task</summary>
 const MaintenanceComponent = () => import('../maintenance/pages/MaintenanceList.vue'); /// <summary>Component for managing maintenance tasks</summary>
 const CreateMaintenanceComponent = () => import('../maintenance/pages/CreateMaintenancePage.vue');
 /**
