@@ -19,6 +19,10 @@ const SubscriptionManagementComponent = () => import('../subscriptions-and-payme
 const DataAnalyticsManagementComponent = () => import('../analytics/pages/data-analytics-management.vue');
 const ConfigurationPage = () => import('../machine-configuration/pages/ConfigurationPage.vue');
 const ProfileManagementComponent = () => import('../profiles/pages/profile-management.vue');
+const PlanningTaskListComponent = () => import('../planningTask/pages/PlanningTaskList.vue'); /// <summary>Component for listing planning tasks</summary>
+const CreatePlanningTaskComponent = () => import('../planningTask/pages/CreatePlanningTaskPage.vue'); /// <summary>Component for creating a new planning task</summary>
+const MaintenanceComponent = () => import('../maintenance/pages/MaintenanceList.vue'); /// <summary>Component for managing maintenance tasks</summary>
+const CreateMaintenanceComponent = () => import('../maintenance/pages/CreateMaintenancePage.vue');
 /**
  * @type {import('vue-router').RouteRecordRaw[]}
  * @description Application route definitions.
@@ -43,7 +47,12 @@ const routes = [
     {   path: '/sign-up',                                              name: 'sign-up',                     component: SignUpComponent,                         meta: {title: 'Sign-Up'}},
     {   path: '/',                                                     name: 'default',                     redirect: {name: 'home'}},
     {   path: '/:pathMatch(.*)*',                                      name: 'not-found',                   component: PageNotFoundComponent,                   meta: {title: 'Page not found'}},
-    {   path: '/user/profile',                                         name: 'profile',                     component: ProfileManagementComponent,              meta: {title: 'Profile' } }
+    {   path: '/user/profile',                                         name: 'profile',                     component: ProfileManagementComponent,              meta: {title: 'Profile' } },
+    { path: '/tasks/create', name: 'createPlanningTask', component: CreatePlanningTaskComponent, meta: { title: 'Create Planning Task' } },
+    { path: "/maintenances", name: "maintenanceList", component: MaintenanceComponent, meta: { title: "Maintenance" } },
+    { path: "/maintenances/create", name: "createMaintenance", component: CreateMaintenanceComponent, meta: { title: "Create Maintenance" } },
+    { path: '/tasks', name: 'planningTasks', component: PlanningTaskListComponent, meta: { title: 'Planning Tasks' } },
+
 ]
 
 

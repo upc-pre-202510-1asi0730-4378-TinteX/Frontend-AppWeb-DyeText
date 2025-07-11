@@ -1,11 +1,9 @@
 <script>
-import {TextileMachineService} from "../../monitoring/services/textilMachine.service.js";
-import {TextileMachine} from "../../monitoring/model/textileMachine.entity.js";
 import {AssignUserService} from "../../assignUsers/services/assign-user.service.js";
 import {AssignUser} from "../../assignUsers/model/assign-user.entity.js";
 import {UserCardService} from "../services/user-card.service.js";
-import {UserCard} from "../model/user-card.entity.js";
-import { v4 as uuidv4 } from 'uuid';
+import {PaymentCard} from "../model/user-card.entity.js";
+import {useAuthenticationStore} from "../../iam/services/authentication.store.js";
 
 export default {
   name: "subscriptions-and-payments-buys",
@@ -23,7 +21,8 @@ export default {
       cardDate: '',
       cardCvv: '',
       nameOnCard: '',
-      country: ''
+      country: '',
+      authenticationStore: useAuthenticationStore()
     }
   },
   emits: ['cancel-requested'],
@@ -32,66 +31,18 @@ export default {
       this.$emit('cancel-requested');
     },
     createCard(){
-
-      let userExist = false;
-
-      this.users.forEach(user => {
-        if(user.email === this.email){
-          userExist = true;
-        }
+      let newCard = new PaymentCard({
+        userName: this.nameOnCard,
+        country: this.country,
+        numberCard: this.cardNumber.replace(/\s+/g, '').replace(/(\d{4})(?=\d)/g, '$1 '),
+        expirationDate: this.cardDate,
+        cvv: this.cardCvv,
+      });
+      this.userCardService.create(newCard).then(m => {
+        this.userCard = { key: this.authenticationStore.currentToken, subscriptionActive : true }
+        localStorage.setItem('userCard', JSON.stringify(this.userCard));
       })
-
-      if(!userExist){
-        //
-        // create a card and a user if user no exist
-        //
-        let newCard = new UserCard({
-          id: uuidv4(),
-          number_card: this.cardNumber.replace(/\s+/g, '').replace(/(\d{4})(?=\d)/g, '$1 '),
-          expiration_date: this.cardDate,
-          cvv: this.cardCvv,
-          user_name: this.nameOnCard,
-          country: this.country,
-        });
-
-        let newUser = new AssignUser({
-          id: uuidv4(),
-          name: this.nameOnCard,
-          email: this.email,
-          phone: '',
-          start_date: '',
-          plant: '',
-          role: '',
-          permission: '',
-          card_id: newCard.id,
-          subscription_active: true
-        })
-
-        this.userService.create(newUser)
-        this.userCardService.create(newCard)
-      }
-      else{
-        //
-        // create a card and update a user if user exist
-        //
-        this.users.filter(user => this.email === user.email).map(card => {
-          let newCard = new UserCard({
-            id: uuidv4(),
-            number_card: this.cardNumber.replace(/\s+/g, '').replace(/(\d{4})(?=\d)/g, '$1 '),
-            expiration_date: this.cardDate,
-            cvv: this.cardCvv,
-            user_name: this.nameOnCard,
-            country: this.country,
-          });
-
-          card.card_id = newCard.id;
-          card.subscription_active = true;
-
-          this.userCardService.create(newCard);
-          this.userService.update(card.id, card)
-        })
-      }
-
+      alert("Subscripción exitosa")
     }
   },
   created() {
@@ -104,7 +55,7 @@ export default {
     }).catch((error) => {console.log(error)});
 
     this.userCardService.getAll().then((response) => {
-      this.userCards = response.data.map(elem => new UserCard(elem));
+      this.userCards = response.data.map(elem => new PaymentCard(elem));
       console.log(this.userCards);
     }).catch((error) => {console.log(error)});
   }
@@ -350,12 +301,5 @@ export default {
   }
 }
 
-.return-to-hide{
-  left: 100%;
-}
-
-.return-to-show {
-  left: 0;
-}
 
 </style>

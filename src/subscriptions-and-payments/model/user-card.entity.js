@@ -1,17 +1,17 @@
-export class UserCard {
+export class PaymentCard {
     constructor({
         id = '',
-        number_card = '',
-        expiration_date = '',
+                    userName = '',
+                country = '',
+                    numberCard = '',
+        expirationDate = '',
         cvv = '',
-        user_name = '',
-        country = '',
                 }) {
         this.id = id;
-        this.number_card = number_card;
-        this.expiration_date = expiration_date;
-        this.cvv = cvv;
-        this.user_name = user_name;
+        this.userName = userName;
         this.country = country;
+        this.numberCard = numberCard;
+        this.expirationDate = expirationDate;
+        this.cvv = cvv;
     }
 }

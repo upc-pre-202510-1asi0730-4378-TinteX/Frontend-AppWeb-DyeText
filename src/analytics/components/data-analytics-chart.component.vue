@@ -120,7 +120,7 @@ export default {
   margin-bottom: 32px;
 }
 .chart-card {
-  background: rgba(49, 47, 47, 0.37);
+  background: rgba(152, 146, 146, 0.37);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
   padding: 16px;

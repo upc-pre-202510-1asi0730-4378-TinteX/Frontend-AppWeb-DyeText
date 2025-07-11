@@ -52,6 +52,9 @@ export default defineComponent({
           <router-link to="/user/profile">
             <i class="pi pi-user" style="font-size: 2rem; cursor: pointer"></i>
           </router-link>
+          <router-link to="/user/subscription">
+            <i class="pi pi-money-bill" style="font-size: 2rem; cursor: pointer"></i>
+          </router-link>
         </div>
         <authentication-section/>
         <language-switcher/>
@@ -92,5 +95,12 @@ main {
   height: 100%;
 }
 
+.pi{
+  color: #003366;
+
+  &:hover{
+    color: #2669ad;
+  }
+}
 
 </style>

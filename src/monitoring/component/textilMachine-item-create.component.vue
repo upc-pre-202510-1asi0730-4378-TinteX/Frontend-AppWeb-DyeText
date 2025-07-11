@@ -4,6 +4,7 @@ import {TextileMachineService} from "../services/textilMachine.service.js";
 import {TextileMachine} from "../model/textileMachine.entity.js";
 import {MachineInformationService} from "../../maintenance/service/machine-information.service.js";
 import {MachineInformation} from "../../maintenance/model/machine-information.entity.js";
+import {useAuthenticationStore} from "../../iam/services/authentication.store.js";
 
 export default {
   name: "textilMachine-create-component",
@@ -21,6 +22,7 @@ export default {
       type: '',
       numberMachine: '',
       machineInformationId: '',
+      authenticationStore: useAuthenticationStore()
     }
   },
   props: {
@@ -38,6 +40,19 @@ export default {
     },
 
     onSaveRequested(){
+      let activeSub = false
+      const userMembershipActive = localStorage.getItem('userCard')
+      if (userMembershipActive){
+        let result = JSON.parse(userMembershipActive)
+        console.log(result.key)
+        console.log(this.authenticationStore.currentToken)
+        activeSub = this.authenticationStore.currentToken === result.key;
+      }
+      if (this.textileMachines.length > 3 && !activeSub){
+        alert("Máx creation of machines without subscription");
+        return 0
+      }
+
       this.submitted = true;
       this.$emit('save-requested', this.item);
 

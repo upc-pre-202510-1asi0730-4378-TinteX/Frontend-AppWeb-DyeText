@@ -13,6 +13,9 @@ export default {
   methods: {
     handleSave(item){
       this.showForm = false;
+    },
+    backToLanding(){
+      this.$router.go(-1);
     }
   },
 }
@@ -20,10 +23,9 @@ export default {
 
 <template>
   <div class="subscription-container-box">
-    <i class="pi pi-arrow-circle-left" style="color: #f9f9f9"></i>
+    <i class="pi pi-arrow-circle-left" style="color: #f9f9f9" @click="backToLanding"></i>
     <h2 class="subTitle">
       <span>Subscription plan</span>
-      <span>Log In</span>
     </h2>
     <div class="subscription-container">
       <div>
@@ -125,6 +127,7 @@ export default {
 
   i{
     font-size: 30px;
+    cursor: pointer;
   }
 
   .subscription-container-info{
@@ -143,6 +146,13 @@ export default {
     li{
       margin: 20px 10px;
     }
+  }
+}
+
+
+@media screen and (max-width: 900px) {
+  img, svg{
+    display: none;
   }
 }
 
