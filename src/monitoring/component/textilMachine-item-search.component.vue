@@ -166,19 +166,24 @@ export default {
       </form>
       <h2>{{ $t('monitoring.available-machines') }}</h2>
       <div class="machines-summary">
-        <div class="machines-summary-item" v-for="textileMachine in filteredMachines" :key="textileMachine.id">
-          <div class="machines-summary-info">
-            <i class="pi pi-exclamation-circle"></i>
-            <div>
-              <span>{{ $t('machine') }}: {{ textileMachine.serialNumber }} </span>
-              <span> {{ textileMachine.status }} </span>
+        <template v-if="textileMachines.length > 0">
+          <div class="machines-summary-item" v-for="textileMachine in filteredMachines" :key="textileMachine.id">
+            <div class="machines-summary-info">
+              <i class="pi pi-exclamation-circle"></i>
+              <div>
+                <span>{{ $t('machine') }}: {{ textileMachine.serialNumber }} </span>
+                <span> {{ textileMachine.status }} </span>
+              </div>
+            </div>
+            <div class="machines-summary-activity">
+              {{ $t('monitoring.last-activity') }}: <br>
+              {{ randomNumber.number }} {{ randomNumber.time }}
             </div>
           </div>
-          <div class="machines-summary-activity">
-            {{ $t('monitoring.last-activity') }}: <br>
-            {{ randomNumber.number }} {{ randomNumber.time }}
-          </div>
-        </div>
+        </template>
+        <template v-else>
+          <p> ----- </p>
+        </template>
       </div>
     </div>
   </div>

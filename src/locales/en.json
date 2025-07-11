@@ -100,7 +100,16 @@
   "on": "On",
   "off": "Off",
   "new": "New",
-  "add": "Add"
+  "add": "Add",
+
+  "password": "Password",
+  "is-required": "is required",
+  "username": "Username",
+  "signup": "Sign Up",
+  "signupTxt": "Please enter the required information to sign up.",
+  "signIn": "Sign In",
+  "signInTxt": "Please enter the required information to sign in."
+
 }
 
 

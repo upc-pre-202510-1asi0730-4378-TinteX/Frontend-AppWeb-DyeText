@@ -46,28 +46,33 @@ export default {
   <div class="assets-container">
     <h2>Assets</h2>
     <div class="assets-list-container">
-      <ul class="assets-list">
-        <li class="assets-item"
-            v-for="textileMchn in textileMachines"
-            :key="textileMchn.id"
-            @click="selectMachine(textileMchn)">
-          <div class="machine-info">
-            <div>
-              <div class="background-i">
-                <i class="pi pi-cog"></i>
+      <template v-if="textileMachines.length > 0">
+        <ul class="assets-list">
+          <li class="assets-item"
+              v-for="textileMchn in textileMachines"
+              :key="textileMchn.id"
+              @click="selectMachine(textileMchn)">
+            <div class="machine-info">
+              <div>
+                <div class="background-i">
+                  <i class="pi pi-cog"></i>
+                </div>
+              </div>
+              <div>
+                {{textileMchn.serialNumber}}
               </div>
             </div>
-            <div>
-              {{textileMchn.serialNumber}}
+            <div class="failure-info-container">
+              <span>{{ $t('maintenance.estimated-failure') }}</span>
+              {{getMachineInformation(textileMchn.machineInformationId)}}
+              <span>{{ $t('maintenance.days') }}</span>
             </div>
-          </div>
-          <div class="failure-info-container">
-            <span>{{ $t('maintenance.estimated-failure') }}</span>
-            {{getMachineInformation(textileMchn.machineInformationId)}}
-            <span>{{ $t('maintenance.days') }}</span>
-          </div>
-        </li>
-      </ul>
+          </li>
+        </ul>
+      </template>
+      <template v-else>
+        <p>No available machines</p>
+      </template>
     </div>
   </div>
   <maintenance-machine-status

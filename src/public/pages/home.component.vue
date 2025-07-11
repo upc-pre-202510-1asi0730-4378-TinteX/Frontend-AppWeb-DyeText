@@ -47,7 +47,7 @@ export default {
   <section class="historical-machine-container">
     <div class="historical-machine">
       <h2> {{ $t('home.machine-insights') }} </h2>
-      <div class="historical-machine-box">
+      <template v-if="textileMachines.length > 0">
         <div class="machine-item"
              v-for="textileMachine in textileMachines"
              :key="textileMachine.id">
@@ -57,7 +57,11 @@ export default {
           <span class="machine-name">Lathe Machine</span>
           <span class="machine-status">{{ $t('home.status') }}: {{ textileMachine.status }}</span>
         </div>
-      </div>
+      </template>
+
+      <template v-else>
+        <p style="margin: 20px 0 0 20px">No available machines</p>
+      </template>
     </div>
     <div class="machine-health">
       <h2> {{ $t('home.overall-m-h') }} </h2>

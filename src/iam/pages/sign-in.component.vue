@@ -35,17 +35,17 @@ export default {
 <template>
   <div class="login-container">
     <div class="login-card">
-      <h3 class="login-title">Sign In</h3>
-      <p class="login-subtitle">Please enter your credentials to sign in.</p>
+      <h3 class="login-title">{{ $t('signIn') }}</h3>
+      <p class="login-subtitle">{{$t('signInTxt')}}</p>
 
       <form @submit.prevent="onSignIn" class="login-form">
         <div class="p-fluid">
           <div class="field mt-4">
             <pv-float-label>
-              <label for="username">Username</label>
+              <label for="username">{{ $t('username') }}</label>
               <pv-input-text id="username" v-model="username" :class="{'p-invalid': !username}" aria-describedby="username-help"/>
             </pv-float-label>
-            <small v-if="!username" id="username-help" class="p-error block mt-2">Username is required.</small>
+            <small v-if="!username" id="username-help" class="p-error block mt-2">{{ $t('username') }} {{ $t('is-required') }}.</small>
           </div>
 
           <div class="field mt-4">
@@ -53,7 +53,7 @@ export default {
               <label for="password">Password</label>
               <pv-input-text id="password" v-model="password" :class="{'p-invalid': !password}" type="password" aria-describedby="password-help"/>
             </pv-float-label>
-            <small v-if="!password" id="password-help" class="p-error block mt-2">Password is required.</small>
+            <small v-if="!password" id="password-help" class="p-error block mt-2">{{ $t('password') }} {{ $t('is-required') }}.</small>
           </div>
 
           <div class="field mt-5">

@@ -101,5 +101,12 @@
   "on": "On",
   "off": "Off",
   "new": "Nuevo",
-  "add": "Agregar"
+  "add": "Agregar",
+  "password": "Contraseña",
+  "is-required": "es requerido",
+  "username": "Nombre de usuario",
+  "signup": "Registrarse",
+  "signupTxt": "Por favor, ingrese la información requerida para registrarse.",
+  "signIn": "Iniciar sesión",
+  "signInTxt": "Por favor, ingrese la información requerida para iniciar sesión."
 }

@@ -35,27 +35,32 @@ export default {
 
 <template>
   <div  class="card">
-    <div class="flex" v-for="textileMachine in textileMachines" :key="textileMachine.id">
-      <div id="header">
-        <h3>{{textileMachine.name}} - {{textileMachine.serialNumber}}</h3>
-      </div>
-      <div id="content" class="template-content">
+    <template v-if="textileMachines.length > 0" >
+      <div class="flex" v-for="textileMachine in textileMachines" :key="textileMachine.id">
+        <div id="header">
+          <h3>{{textileMachine.name}} - {{textileMachine.serialNumber}}</h3>
+        </div>
+        <div id="content" class="template-content">
         <span>
           {{ $t('monitoring.status') }}: {{textileMachine.status}}
         </span>
-        <span>
+          <span>
           {{ $t('monitoring.floor') }}: {{ textileMachine.floor }}
         </span>
-        <span>
+          <span>
           {{ $t('monitoring.zone') }}: {{ textileMachine.zone }}
         </span>
-        <span>
+          <span>
           {{ $t('monitoring.date-installation') }}: {{ textileMachine.dateInstallation }}
         </span>
+        </div>
+        <br>
+        <i class="pi pi-cog" style="font-size: 20px;cursor: pointer" @click="goToConfiguration(textileMachine)"></i>
       </div>
-      <br>
-      <i class="pi pi-cog" style="font-size: 20px;cursor: pointer" @click="goToConfiguration(textileMachine)"></i>
-    </div>
+    </template>
+    <template v-else>
+      <p style="color: #1a1a1a">No available machines</p>
+    </template>
   </div>
 </template>
 
