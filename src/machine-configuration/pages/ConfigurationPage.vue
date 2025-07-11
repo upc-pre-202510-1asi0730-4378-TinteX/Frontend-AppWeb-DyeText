@@ -16,6 +16,7 @@
 <script>
 import ConnectionForm from '../components/ConnectionForm.vue';
 import { testConnection, getMachineInformation } from '../services/connection.service';
+import {TextileMachine} from "../../monitoring/model/textileMachine.entity.js";
 
 export default {
   components: { ConnectionForm },
@@ -24,24 +25,30 @@ export default {
       type: Object,
       required: true,
     },
+    id: {
+      type: String,
+      required: true, // porque el router pasará `:id` como prop
+    }
   },
   data() {
     return {
       connectionResult: null,
       machineConfig: {
         name: '',
+        id: this.id,
         protocol: 'HTTP',
         updateFrequency: 0,
       },
     };
   },
   async created() {
-    if (!this.machine.id) {
-      console.error('El ID de la máquina no está definido.');
+    console.log(this.id);  // 👈 ya no necesitas this.$route.params.id
+    if (!this.id) {
+      console.error('Error: ID machine not found.');
       return;
     }
     try {
-      const machineInfo = await getMachineInformation(this.machine.id);
+      const machineInfo = await getMachineInformation(this.id);
       this.machineConfig.name = machineInfo.name;
       this.machineConfig.updateFrequency = machineInfo.updateFrequency;
     } catch (error) {
@@ -58,7 +65,14 @@ export default {
       }
     },
     goToTestConnection() {
-      this.$router.push({name: 'test-connection'});
+      if (!this.machineConfig.id) {
+        console.error('Error: ID is not available.');
+        return;
+      }
+      this.$router.push({
+        name: 'test-connection',
+        params: { id: this.machineConfig.id },
+      });
     },
   },
 };

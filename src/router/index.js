@@ -32,7 +32,7 @@ const routes = [
     {   path: '/machine/notifications', name: 'notifications', component: NotificationManagementComponent, meta: { title: 'Notifications' } },
     {   path: '/machine/monitoring',                  name: 'Monitoring',               component: Monitoring,               meta: {title: 'Monitoring'}},
     {   path: '/machine/maintenance',                  name: 'Maintenance',               component: MaintenanceManagementComponent,               meta: {title: 'Maintenance'}},
-    {   path: '/machine/monitoring/machine-configuration', name: 'machine-configuration', component: ConfigurationPage, props: route => ({ machine: route.params.machine || {} }),},
+    {   path: '/machine/monitoring/machine-configuration/:id', name: 'machine-configuration', component: ConfigurationPage, props: true},
     {   path: '/machine/data-analytics', name: 'Analytics', component: DataAnalyticsManagementComponent, meta: { title: 'Data Analytics' } },
     {   path: '/user/subscription',  name: 'Subscription',  component: SubscriptionManagementComponent,               meta: {title: 'Subscription'}},
     {   path: '/user/assign-user',            name: 'assignUser',         component: AssignUsersManagementComponent, meta: {title: 'AssignUser'}},

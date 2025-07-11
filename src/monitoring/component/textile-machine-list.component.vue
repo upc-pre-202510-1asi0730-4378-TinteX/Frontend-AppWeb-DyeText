@@ -15,9 +15,10 @@ export default {
   },
   methods: {
     goToConfiguration(machine) {
+      console.log(machine.id);
       this.$router.push({
         name: 'machine-configuration',
-        params: { machine: machine },
+        params: { id: machine.id },
       });
     },
   },
