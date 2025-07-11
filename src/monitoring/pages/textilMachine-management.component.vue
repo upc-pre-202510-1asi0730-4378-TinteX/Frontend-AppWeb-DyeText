@@ -7,7 +7,6 @@ import {TextileMachineService} from "../services/textilMachine.service.js";
 import DataManager from "../../shared/components/data-manager.component.vue";
 import {Button as PvButton} from "primevue";
 import TextileMachineList from "../component/textile-machine-list.component.vue";
-import AddTaskModal from "../../task/component/AddTaskModel.component.vue";
 
 export default {
   name: "textilMachine-management",
@@ -17,15 +16,10 @@ export default {
     TextilMachineCreateComponent,
     TextilMachineSearchContent,
     DataManager,
-    AddTaskModal,
   },
   data() {
     return {
       showForm: false, // Controls the visibility of the machine creation form
-      showTaskModal: false, // Controls the visibility of the task modal
-      selectedMachineId: null, // Stores the selected machine ID
-      tasks: [], // List of tasks
-      machines: [], // List of machines
     };
   },
   methods: {
@@ -86,79 +80,9 @@ export default {
   <!-- List of textile machines -->
   <textile-machine-list />
   <!-- Task modal -->
-  <AddTaskModal
-      v-if="showTaskModal"
-      :machines="machines"
-      @close="closeTaskModal"
-      @task-added="addTask"
-  />
-  <div class="task-list">
-    <h2>Lista de Tareas</h2>
-    <!-- Group tasks by machine -->
-    <div v-for="machine in machines" :key="machine.id" class="machine-task-group">
-      <h3>Máquina {{ machine.name }} (ID: {{ machine.id }})</h3>
-      <ul>
-        <!-- Display tasks for each machine -->
-        <li
-            v-for="task in getTasksForMachine(machine.id)"
-            :key="task.id"
-            class="task-item"
-        >
-          <div class="task-details">
-            <span class="task-description">{{ task.description }}</span>
-            <span class="task-status">{{ task.status }}</span>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
 </template>
 
 <style scoped>
-/* Styling for the task list */
-.task-list {
-  margin-top: 20px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #006d77; /* Dark turquoise background */
-  color: white;
-}
-
-.machine-task-group {
-  margin-bottom: 20px;
-}
-
-.task-item {
-  display: flex;
-  justify-content: center; /* Center align task details */
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-  font-weight: bold; /* Bold text */
-}
-
-.task-item:last-child {
-  border-bottom: none;
-}
-
-.task-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center align text */
-}
-
-.task-description {
-  font-weight: bold;
-  color: white;
-  text-align: center; /* Center align text */
-}
-
-.task-status {
-  font-size: 0.9rem;
-  color: #d4f1f4; /* Lighter color for status */
-  text-align: center; /* Center align text */
-}
 
 .btn-add-machine{
   margin-bottom: 20px;

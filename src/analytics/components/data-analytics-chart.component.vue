@@ -1,95 +1,90 @@
-<script setup>
-import { ref, onMounted, computed } from 'vue';
+<script>
 import { Bar, Line } from 'vue-chartjs';
 import { Chart, registerables } from 'chart.js';
+import {TextileMachineService} from "../../monitoring/services/textilMachine.service.js";
+import {TextileMachine} from "../../monitoring/model/textileMachine.entity.js";
+import {MachineInformationService} from "../../maintenance/service/machine-information.service.js";
+import {MachineInformation} from "../../maintenance/model/machine-information.entity.js";
 Chart.register(...registerables);
+export default {
+  name: 'data-analytics-charts',
+  components: { Bar, Line },
+  data() {
+    return {
+      showForm: false,
+      machinesInformation: [],
+      textileMachines: [],
+      textileMachineService: null,
+      machineInformationService: null,
+      tasks: [],
+      notifications: [],
+      barDataA: null,
+      barDataB: null,
+      barDataC: null,
+      lineDataD: null,
+      chartOptions: {
+        responsive: true,
+        plugins: {legend: {display: true}}
+      }
+    };
+  },
+  async created() {
+    this.textileMachineService = new TextileMachineService();
+    this.machineInformationService = new MachineInformationService();
 
+    try {
+      // Fetch all necessary data concurrently
+      const [
+        machinesInfoResponse,
+        textileMachinesResponse
+      ] = await Promise.all([
+        this.machineInformationService.getAll(),
+        this.textileMachineService.getAll()
+      ]);
 
-const machines = ref([]);
-const machinesInfo = ref([]);
-const tasks = ref([]);
-const notifications = ref([]);
+      this.machinesInformation = machinesInfoResponse.data.map(elem => new MachineInformation(elem));
+      this.textileMachines = textileMachinesResponse.data.map(elem => new TextileMachine(elem));
 
-const barDataA = ref(null);
-const barDataB = ref(null);
-const barDataC = ref(null);
-const lineDataD = ref(null);
+      this.barDataA = {
+        labels: this.textileMachines.map(m => m.name),
+        datasets: [{
+          label: 'Failure Rate (%)',
+          backgroundColor: '#42A5F5',
+          data: this.textileMachines.map(m => {
+            const info = this.machinesInformation.find(i => i.id === m.machineInformationId);
+            return info ? info.failureRate : 0;
+          })
+        }]
+      };
 
-const chartOptions = {
-  responsive: true,
-  plugins: { legend: { display: true } }
-};
+      this.barDataB = {
+        labels: this.textileMachines.map(m => m.name),
+        datasets: [{
+          label: 'Number of Failures',
+          backgroundColor: '#66BB6A',
+          data: this.textileMachines.map(m => {
+            const info = this.machinesInformation.find(i => i.id === m.machineInformationId);
+            return info ? info.amountFailure : 0;
+          })
+        }]
+      };
 
-const isReady = computed(() =>
-    barDataA.value && barDataB.value && barDataC.value && lineDataD.value
-);
+      console.log("barDataA populated:", this.barDataA);
+      console.log("barDataB populated:", this.barDataB);
 
-onMounted(async () => {
+    } catch (error) {
+      console.error('Error fetching data for charts:', error);
+    }
+  }
+}
 
-  const machinesRes = await fetch('http://localhost:3000/textile_machines');
-  machines.value = await machinesRes.json();
-  const infoRes = await fetch('http://localhost:3000/machines_information');
-  machinesInfo.value = await infoRes.json();
-  const tasksRes = await fetch('http://localhost:3000/tasks');
-  tasks.value = await tasksRes.json();
-  const notifRes = await fetch('http://localhost:3000/notifications');
-  notifications.value = await notifRes.json();
-
-  barDataA.value = {
-    labels: machines.value.map(m => m.name),
-    datasets: [{
-      label: 'Failure Rate (%)',
-      backgroundColor: '#42A5F5',
-      data: machines.value.map(m => {
-        const info = machinesInfo.value.find(i => i.id === m.machine_information_id);
-        return info ? info.failure_rate : 0;
-      })
-    }]
-  };
-
-  barDataB.value = {
-    labels: machines.value.map(m => m.name),
-    datasets: [{
-      label: 'Number of Failures',
-      backgroundColor: '#66BB6A',
-      data: machines.value.map(m => {
-        const info = machinesInfo.value.find(i => i.id === m.machine_information_id);
-        return info ? info.amount_failure : 0;
-      })
-    }]
-  };
-
-  const estados = [...new Set(tasks.value.map(t => t.status))];
-  barDataC.value = {
-    labels: estados,
-    datasets: [{
-      label: 'Number of Tasks',
-      backgroundColor: '#FFA726',
-      data: estados.map(e => tasks.value.filter(t => t.status === e).length)
-    }]
-  };
-
-  const fechas = notifications.value.map(n => n.dateTime.split('T')[0]);
-  const fechasUnicas = [...new Set(fechas)];
-  lineDataD.value = {
-    labels: fechasUnicas,
-    datasets: [{
-      label: 'Notifications',
-      borderColor: '#AB47BC',
-      backgroundColor: 'rgba(171,71,188,0.2)',
-      data: fechasUnicas.map(f => fechas.filter(x => x === f).length),
-      fill: true,
-      tension: 0.4
-    }]
-  };
-});
 </script>
 
 <template>
   <div>
     <div class="charts-grid">
       <div class="chart-card">
-        <h3>{{ $t('analytics.graphA') }}</h3>
+        <h3 > {{ $t('analytics.graphA') }}</h3>
         <Bar v-if="barDataA" :data="barDataA" :options="chartOptions" />
       </div>
       <div class="chart-card">
@@ -125,7 +120,7 @@ onMounted(async () => {
   margin-bottom: 32px;
 }
 .chart-card {
-  background: #fff;
+  background: rgba(49, 47, 47, 0.37);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
   padding: 16px;
@@ -136,10 +131,17 @@ onMounted(async () => {
   max-height: 250px !important;
 }
 .legend {
-  background: #f5f5f5;
+  background: rgba(50, 72, 84, 0.63);
   border-radius: 8px;
   padding: 16px;
-  margin-top: 24px;
+  margin: auto;
+  width: 55%;
+  ul{
+    list-style: none;
+    li{
+      margin: 16px 0;
+    }
+  }
 }
 .legend ul {
   margin: 0;

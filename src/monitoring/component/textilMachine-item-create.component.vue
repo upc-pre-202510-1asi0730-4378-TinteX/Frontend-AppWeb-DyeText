@@ -167,6 +167,7 @@ export default {
 
   form{
     width: 25rem;
+    height: 27rem;
     background: #ffffff;
     color: #000000;
     margin: 10rem auto;
