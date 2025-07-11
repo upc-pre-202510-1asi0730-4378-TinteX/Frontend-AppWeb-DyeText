@@ -42,6 +42,12 @@ export default {
         this.userCard = { key: this.authenticationStore.currentToken, subscriptionActive : true }
         localStorage.setItem('userCard', JSON.stringify(this.userCard));
       })
+      this.email = ''
+      this.cardNumber = ''
+      this.cardDate = ''
+      this.cardCvv = ''
+      this.nameOnCard = ''
+      this.country = ''
       alert("Subscripción exitosa")
     }
   },
@@ -160,7 +166,7 @@ export default {
                 v-model="country" required
             />
           </div>
-          <button class="w-full" role="button" type="submit"
+          <button class="w-full" role="button" type="button"
                   @click="createCard()">
             <span>Subscribe</span>
             <i class="pi pi-lock"></i>

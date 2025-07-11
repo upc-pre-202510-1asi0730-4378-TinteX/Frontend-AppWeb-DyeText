@@ -97,6 +97,7 @@ export default {
 
         this.textileMachineService.create(newMachine).then((response) => {
           console.log("Machine created successfully:", response);
+          this.textileMachines.push(new TextileMachine(response.data));
         })
 
       }).catch((error) => {

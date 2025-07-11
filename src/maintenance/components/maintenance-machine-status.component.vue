@@ -114,7 +114,6 @@ export default {
       </div>
       <div class="btns-machines-config-container">
         <button class="btn btn-frt-cnt first-btn"  @click="showProductionStatus = true; showProduction">{{ $t('maintenance.production-status') }}</button>
-        <button class="btn btn-frt-cnt second-btn active"  @click="showProductionStatus = true">{{ $t('maintenance.history') }}</button>
         <div>
           <button  class="btn btn-scn-cnt third-btn">
             {{ $t('off') }}
@@ -322,7 +321,9 @@ export default {
   color: #ffffff;
 }
 
-.active{
+
+
+.first-btn:focus{
   background: #003366!important;
   color: #ffffff!important;
 }

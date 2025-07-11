@@ -95,10 +95,6 @@ export default {
         <h3>{{ $t('analytics.graphC') }}</h3>
         <Bar v-if="barDataC" :data="barDataC" :options="chartOptions" />
       </div>
-      <div class="chart-card">
-        <h3>{{ $t('analytics.graphD') }}</h3>
-        <Line v-if="lineDataD" :data="lineDataD" :options="chartOptions" />
-      </div>
     </div>
     <div class="legend">
       <h4>{{ $t('analytics.legendTitle') }}</h4>
@@ -106,7 +102,6 @@ export default {
         <li><b>{{ $t('analytics.graphA') }}:</b> {{ $t('analytics.legendA') }}</li>
         <li><b>{{ $t('analytics.graphB') }}:</b> {{ $t('analytics.legendB') }}</li>
         <li><b>{{ $t('analytics.graphC') }}:</b> {{ $t('analytics.legendC') }}</li>
-        <li><b>{{ $t('analytics.graphD') }}:</b> {{ $t('analytics.legendD') }}</li>
       </ul>
     </div>
   </div>
