@@ -83,7 +83,7 @@ export default {
     </div>
     <div>{{ $t('machine') }} {{ $t('monitoring.number') }} <strong>{{machine.serialNumber}}</strong></div>
     <div>
-      <h2 style="font-size: 50px">Detail</h2>
+      <h2 class="detail-page-title" style="font-size: 50px">Detail</h2>
       <div v-if="machineInfo" class="machine-info-container">
         <div class="machine-info">
           <img src="../../../public/speed.png" alt="temperature">
@@ -125,16 +125,17 @@ export default {
         </div>
       </div>
     </div>
-    <div style="margin-top: 50px" v-if="showProductionStatus && machineInfo">
-      <div>
-        <h2>{{  $t('maintenance.current-status') }}</h2>
-        <span>{{  $t('home.status') }}: {{ machine.status }}</span> <br>
-        <span>{{ $t('maintenance.time-spent') }}: {{ machineInfo.timeSpent }}</span>
+    <div  class="main-dashboard-container" style="margin-top: 50px" v-if="showProductionStatus && machineInfo">
+      <div class="status-card">
+        <h2 class="card-title">{{ $t('maintenance.current-status') }}</h2>
+        <p class="card-item"><span class="label-bold"> {{ $t('home.status') }} </span>: <span class="status-value">{{ machine.status }}</span></p>
+        <p class="card-item"><span class="label-bold"> {{ $t('maintenance.time-spent') }} </span>: <span class="data-value">{{ machineInfo.timeSpent }}</span></p>
       </div>
-      <div>
-        <h2>{{ $t('maintenance.daily-metrics') }}</h2>
-        <span>{{ $t('maintenance.day-progress') }}: {{ machineInfo.dayProgress }}</span><br>
-        <span>{{ $t('maintenance.failure-rate') }}: {{ machineInfo.failureRate }}</span>
+
+      <div class="metrics-card">
+        <h2 class="card-title">{{ $t('maintenance.daily-metrics') }}</h2>
+        <p class="card-item"><span class="label-bold">{{ $t('maintenance.day-progress') }}</span>: <span class="data-value">{{ machineInfo.dayProgress }}</span></p>
+        <p class="card-item"><span class="label-bold">{{ $t('maintenance.failure-rate') }}</span>: <span class="data-value">{{ machineInfo.failureRate }}</span></p>
       </div>
     </div>
   </div>
@@ -171,6 +172,10 @@ export default {
   }
 }
 
+.label-bold {
+  font-weight: 700;
+  color: inherit;
+}
 
 .person-manager{
   padding: 20px;
@@ -205,6 +210,23 @@ export default {
   box-shadow: -10px 0 20px rgba(0, 0, 0, 0.2);  /*  shadow left */
   border-left: 1px solid rgba(255, 255, 255, 0.3);
 
+  .detail-page-title{
+    font-size: 3.5em;
+    color: #333;
+    text-align: center;
+    display: flex;
+
+    &::before,
+    &::after {
+      content: '';
+      flex-grow: 1;
+      height: 2px;
+      margin: 40px 45px;
+      background-color: #000000;
+    }
+
+  }
+
   &::-webkit-scrollbar{
     width: 5px;
   }
@@ -227,11 +249,11 @@ export default {
     margin: 15px;
     align-items: center;
     flex-direction: column;
-    flex-basis: 20rem;
-    border: rgba(59, 56, 56, 0.42) 1px solid;
-    border-radius: 10px;
+    flex-basis: 25rem;
+    border-radius: 5px;
     overflow: hidden;
-    box-shadow: rgba(59, 56, 56, 0.42) 2px 2px 5px;
+    box-shadow: rgba(59, 56, 56, 0.13) 2px 2px 5px;
+    background: rgba(192, 194, 199, 0.41);
 
     span{
       text-align: start;
@@ -247,6 +269,58 @@ export default {
   }
 }
 
+.main-dashboard-container {
+  position: relative;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.status-card,
+.metrics-card {
+  background-color: rgba(123, 141, 147, 0.39);
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  text-align: center;
+  flex: 1;
+  min-width: 280px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-size: 2.2em;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.card-item {
+  font-size: 1.3em;
+  color: #34495e;
+  margin-bottom: 10px;
+  line-height: 1.5;
+  font-weight: normal;
+}
+
+.card-item:last-child {
+  margin-bottom: 0;
+}
+
+.status-value {
+  font-weight: 700;
+  color: #e74c3c;
+}
+
+.data-value {
+  font-weight: 600;
+  color: #ffffff;
+}
 
 .active{
   background: #003366!important;

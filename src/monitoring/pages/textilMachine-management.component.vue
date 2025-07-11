@@ -63,7 +63,7 @@ export default {
   <textil-machine-search-content />
   <div>
     <!-- Button to add a new machine -->
-    <pv-button role="button" type="button" class="btn-add-sensor" @click="showForm = true">
+    <pv-button role="button" type="button" class="btn-add-machine" @click="showForm = true">
       <h3>{{ $t('add') }} {{ $t('new') }} {{ $t('machine') }}</h3>
       <i class="pi pi-plus"></i>
     </pv-button>
@@ -71,7 +71,7 @@ export default {
   <div class="centered-button">
     <!-- Button to open the task modal -->
     <pv-button role="button" type="button" class="btn-add-task" @click="openTaskModal">
-      <h3>Añadir Tarea</h3>
+      <h3>{{ $t('add') }} Task</h3>
       <i class="pi pi-plus"></i>
     </pv-button>
   </div>
@@ -159,4 +159,9 @@ export default {
   color: #d4f1f4; /* Lighter color for status */
   text-align: center; /* Center align text */
 }
+
+.btn-add-machine{
+  margin-bottom: 20px;
+}
+
 </style>

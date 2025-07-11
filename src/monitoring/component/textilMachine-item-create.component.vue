@@ -3,7 +3,6 @@ import CreateAndEdit from "../../shared/components/create-and-edit.component.vue
 import {TextileMachineService} from "../services/textilMachine.service.js";
 import {TextileMachine} from "../model/textileMachine.entity.js";
 import {uuid} from "@primevue/core";
-import {readonly} from "vue";
 import {MachineInformationService} from "../../maintenance/service/machine-information.service.js";
 import {MachineInformation} from "../../maintenance/model/machine-information.entity.js";
 
@@ -22,7 +21,7 @@ export default {
       floor: '',
       type: '',
       numberMachine: '',
-      machineInformationId: "",
+      machineInformationId: '',
     }
   },
   props: {
@@ -40,7 +39,6 @@ export default {
     },
 
     onSaveRequested(){
-
       this.submitted = true;
       this.$emit('save-requested', this.item);
 
@@ -73,22 +71,24 @@ export default {
         console.log("Machine information created successfully:", response);
         this.machineInformationId = response.data.id;
         console.log(this.machineInformationId);
+        const newMachine = {
+          machineInformationId: this.machineInformationId,
+          name: this.name,
+          assetType: this.type,
+          status: status[Math.floor(Math.random() * status.length)],
+          serialNumber: this.numberMachine,
+          floor: this.floor,
+          zone: this.zone,
+          dateInstallation: new Date().toISOString().slice(0, 10).toString(),
+        }
+
+        this.textileMachineService.create(newMachine).then((response) => {
+          console.log("Machine created successfully:", response);
+        })
+
       }).catch((error) => {
         console.error("Error creating machine information:", error);
       });
-      
-      const newMachine = {
-        machineInformationId: this.machineInformationId.toString(),
-        name: this.name,
-        assetType: this.type,
-        status: status[Math.floor(Math.random() * status.length)],
-        serialNumber: this.numberMachine,
-        floor: this.floor,
-        zone: this.zone,
-        dateInstallation: new Date().toISOString().slice(0, 10).toString(),
-      }
-
-      this.textileMachineService.create(newMachine)
     },
   },
   created() {
@@ -96,12 +96,12 @@ export default {
     this.machineInformationService = new MachineInformationService();
 
     this.textileMachineService.getAll().then((response) => {
-      this.textileMachines = response.map(elem => new TextileMachine(elem));
+      this.textileMachines = response.data.map(elem => new TextileMachine(elem));
       console.log(this.textileMachines);
     }).catch((error) => {console.log(error)});
     
     this.machineInformationService.getAll().then((response) => {
-      this.machineInformations = response.map(elem => new MachineInformation(elem));
+      this.machineInformations = response.data.map(elem => new MachineInformation(elem));
       console.log(this.machineInformations);
     }).catch((error) => {console.log(error)});
   }
