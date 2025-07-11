@@ -7,6 +7,7 @@ import {TextileMachineService} from "../services/textilMachine.service.js";
 import DataManager from "../../shared/components/data-manager.component.vue";
 import {Button as PvButton} from "primevue";
 import TextileMachineList from "../component/textile-machine-list.component.vue";
+import CreateTaskForm from "../../task/components/CreatePlanningTaskForm.vue";
 
 export default {
   name: "textilMachine-management",
@@ -16,6 +17,7 @@ export default {
     TextilMachineCreateComponent,
     TextilMachineSearchContent,
     DataManager,
+    CreateTaskForm
   },
   data() {
     return {
@@ -76,6 +78,10 @@ export default {
       @cancel-requested="showForm = false"
       @save-requested="handleSave"
   />
+
+  <div v-if="showTaskForm" class="task-form-wrapper">
+    <CreateTaskForm />
+  </div>
   <h2 style="color: #1a1a1a">{{ $t('monitoring.featured-machines') }}</h2>
   <!-- List of textile machines -->
   <textile-machine-list />
@@ -87,5 +93,13 @@ export default {
 .btn-add-machine{
   margin-bottom: 20px;
 }
+.centered-button {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
+.task-form-wrapper {
+  margin: 0 auto;
+  max-width: 600px;
+}
 </style>
