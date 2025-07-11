@@ -46,22 +46,23 @@ export default {
   </div>
   <section class="historical-machine-container">
     <div class="historical-machine">
-      <h2> {{ $t('home.machine-insights') }} </h2>
-      <template v-if="textileMachines.length > 0">
-        <div class="machine-item"
-             v-for="textileMachine in textileMachines"
-             :key="textileMachine.id">
-          <div class="machine-item-img">
-            <img src="https://deltamaquinastexteis.com.br/wp-content/uploads/2023/10/maquinas-texteis-modelo-para-confeccao.jpg">
+      <div class="historical-machine-box">
+        <template v-if="textileMachines.length > 0">
+          <div class="machine-item"
+               v-for="textileMachine in textileMachines"
+               :key="textileMachine.id">
+            <div class="machine-item-img">
+              <img src="https://deltamaquinastexteis.com.br/wp-content/uploads/2023/10/maquinas-texteis-modelo-para-confeccao.jpg">
+            </div>
+            <span class="machine-name">Lathe Machine</span>
+            <span class="machine-status">{{ $t('home.status') }}: {{ textileMachine.status }}</span>
           </div>
-          <span class="machine-name">Lathe Machine</span>
-          <span class="machine-status">{{ $t('home.status') }}: {{ textileMachine.status }}</span>
-        </div>
-      </template>
+        </template>
 
-      <template v-else>
-        <p style="margin: 20px 0 0 20px">No available machines</p>
-      </template>
+        <template v-else>
+          <p>No available machines</p>
+        </template>
+      </div>
     </div>
     <div class="machine-health">
       <h2> {{ $t('home.overall-m-h') }} </h2>
